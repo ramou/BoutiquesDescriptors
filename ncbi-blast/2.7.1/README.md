@@ -1,26 +1,26 @@
 # NCBI Blast 2.7.1
- - [?] blast_formatter
- - [?] blastdbcheck
- - [?] blastdbcmd
- - [?] blastdbcp
- - [?] blastn
- - [?] blastp
- - [?] blastx
- - [?] convert2blastmask
- - [?] datatool
- - [?] deltablast
- - [?] dustmasker
- - [?] gene_info_reader
+ - [ ] blast_formatter
+ - [ ] blastdbcheck
+ - [ ] blastdbcmd
+ - [ ] blastdbcp
+ - [ ] blastn
+ - [ ] blastp
+ - [ ] blastx
+ - [ ] convert2blastmask
+ - [ ] datatool
+ - [ ] deltablast
+ - [ ] dustmasker
+ - [ ] gene_info_reader
  - [x] makeblastdb
- - [?] makembindex
- - [?] makeprofiledb
- - [?] project_tree_builder
- - [?] psiblast
- - [?] rpsblast
- - [?] rpstblastn
- - [?] seedtop
- - [?] segmasker
- - [?] seqdb_perf
- - [?] tblastn
- - [?] tblastx
- - [?] windowmasker
+ - [ ] makembindex
+ - [ ] makeprofiledb
+ - [ ] project_tree_builder
+ - [ ] psiblast
+ - [ ] rpsblast
+ - [ ] rpstblastn
+ - [ ] seedtop
+ - [ ] segmasker
+ - [ ] seqdb_perf
+ - [ ] tblastn
+ - [ ] tblastx
+ - [ ] windowmasker
