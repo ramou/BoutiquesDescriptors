@@ -1,0 +1,229 @@
+{
+    "command-line": "init_genpipes -a /cvmfs-cache/cvmfs/shared/ -c /etc/parrot/ /cvmfs/soft.mugqic/CentOS6/software/blast/ncbi-blast-2.7.1+/bin/makeblastdb [fHELP] [IN] [INPUT_TYPE] [DBTYPE] [TITLE] [fPARSE_SEQIDS] [fHASHINDEX] [MASK_DATA_FILES] [MASK_ALGO_IDS] [MASK_DESC] [fGI_MASK] [GI_MASK_NAME] [OUT] [MAX_FILE_SIZE] [LOG_FILE] [TAX_ID] [TAX_ID_MAP] [fVERSION]",
+    "container-image": {
+        "type": "docker",
+        "image": "c3genomics/genpipes",
+        "container-opts": [
+            "--privileged",
+            "-v /tmp:/tmp",
+            "--network host -it",
+            "-w $PWD",
+            "-v $HOME:$HOME",
+            "--user $UID:$GROUPS",
+            "-v /etc/group:/etc/group",
+            "-v /etc/passwd:/etc/passwd"
+        ]
+    },
+    "description": "Application to create BLAST databases, version 2.7.1+",
+    "inputs": [
+        {
+            "command-line-flag": "-h",
+            "description": "A flag which displays help message",
+            "id": "help",
+            "name": "Help flag",
+            "optional": true,
+            "type": "Flag",
+            "value-key": "[fHELP]"
+        },
+        {
+            "command-line-flag": "-version",
+            "description": "Print version number; ignore other arguments",
+            "id": "version",
+            "name": "Print version number",
+            "optional": true,
+            "type": "Flag",
+            "value-key": "[fVERSION]"
+        },
+        {
+            "command-line-flag": "-parse_seqids",
+            "description": "A flag which enables parsing of sequence ids",
+            "id": "parse_seqids",
+            "name": "Parse Sequence IDs flag",
+            "optional": true,
+            "type": "Flag",
+            "value-key": "[fPARSE_SEQIDS]"
+        },
+        {
+            "command-line-flag": "-hash_index",
+            "description": "A flag which enables the creation of sequence hash values. These hash values can then be used to quickly determine if a given sequence data exists in this BLAST database.",
+            "id": "hash_index",
+            "name": "Enable Hash indexes",
+            "optional": true,
+            "type": "Flag",
+            "value-key": "[fHASHINDEX]"
+        },
+        {
+            "command-line-flag": "-gi_mask",
+            "description": "A flag which creates GI indexed masking data.",
+            "id": "gi_mask",
+            "name": "GI indexed masking data flag",
+            "optional": true,
+            "type": "Flag",
+            "requires-inputs": ["parse_seqids"],
+            "value-key": "[fGI_MASK]"
+        },
+        {
+            "command-line-flag": "-gi_mask_name",
+            "description": "Comma-separated list of masking data output files.",
+            "id": "gi_mask_name",
+            "name": "Masking data",
+            "optional": true,
+            "list": true,
+            "list-separator": ",",
+            "min-list-entries": 1,
+            "type": "File",
+            "value-key": "[GI_MASK_NAME]",
+            "requires-inputs": ["mask_data","gi_mask"]
+        },
+        {
+            "command-line-flag": "-dbtype",
+            "description": "Molecule type of target db",
+            "id": "dbtype",
+            "name": "Database Type",
+            "optional": true,
+            "type": "String",
+            "value-choices": [
+                "nucl",
+                "prot"
+            ],
+            "value-key": "[DBTYPE]"
+        },
+        {
+            "command-line-flag": "-in",
+            "description": "The input source, either a file name or standard in (-, the default)",
+            "id": "in",
+            "name": "Input file/database name",
+            "optional": true,
+            "type": "File",
+            "value-key": "[IN]"
+        },
+        {
+            "command-line-flag": "-out",
+            "description": "It will use the input filename, but is required if there are multiple input files/databases",
+            "id": "out",
+            "name": "Type of the data specified in input_file",
+            "optional": true,
+            "type": "File",
+            "value-key": "[OUT]"
+        },
+        {
+            "command-line-flag": "-input_type",
+            "description": "Type of the data specified in input_file. Will default to 'fasta'",
+            "id": "input_type",
+            "name": "Type of the data specified in input_file",
+            "optional": true,
+            "type": "String",
+            "value-key": "[INPUT_TYPE]"
+        },
+        {
+            "command-line-flag": "-title",
+            "description": "Title for BLAST database. Defaults to input file name.",
+            "id": "title",
+            "name": "Title for BLAST database",
+            "optional": true,
+            "type": "String",
+            "value-key": "[TITLE]"
+        },
+        {
+            "command-line-flag": "-mask_data",
+            "description": "Title for BLAST database. Defaults to input file name.",
+            "id": "mask_data",
+            "name": "Title for BLAST database",
+            "optional": true,
+            "list": true,
+            "list-separator": ",",
+            "min-list-entries": 1,
+            "type": "File",
+            "value-key": "[MASK_DATA_FILES]"
+        },
+        {
+            "command-line-flag": "-mask_id",
+            "description": "Comma-separated list of strings to uniquely identify the masking algorithm.",
+            "id": "mask_id",
+            "name": "Masking Algorithm",
+            "optional": true,
+            "list": true,
+            "list-separator": ",",
+            "min-list-entries": 1,
+            "type": "String",
+            "value-key": "[MASK_ALGO_IDS]",
+            "requires-inputs": ["mask_data"],
+            "disables-inputs": ["gi_mask"]
+        },
+        {
+            "command-line-flag": "-mask_desc",
+            "description": "Comma-separated list of free form strings to describe the masking algorithm details.",
+            "id": "mask_desc",
+            "name": "Masking Algorithm Details",
+            "optional": true,
+            "list": true,
+            "list-separator": ",",
+            "min-list-entries": 1,
+            "type": "String",
+            "value-key": "[MASK_DESC]",
+            "requires-inputs": ["mask_id"]
+        },
+        {
+            "command-line-flag": "-max_file_sz",
+            "description": "Maximum file size for BLAST database files.",
+            "id": "max_file_sz",
+            "name": "Max database file size",
+            "optional": true,
+            "type": "String",
+            "value-key": "[MAX_FILE_SIZE]"
+        },
+        {
+            "command-line-flag": "-logfile",
+            "description": "File to which the program log should be redirected.",
+            "id": "logfile",
+            "name": "Log file",
+            "optional": true,
+            "type": "File",
+            "value-key": "[LOG_FILE]"
+        },
+        {
+            "command-line-flag": "-taxid",
+            "description": "Taxonomy ID to assign to all sequences.",
+            "id": "taxid",
+            "name": "Taxonomy ID",
+            "optional": true,
+            "type": "Number",
+            "minimum": 0,
+            "value-key": "[TAX_ID]",
+            "disables-inputs": ["taxid_map"]
+        },
+        {
+            "command-line-flag": "-taxid_map",
+            "description": "Text file mapping sequence IDs to taxonomy IDs.",
+            "id": "taxid_map",
+            "name": "Sequence to taxonomy mapping",
+            "optional": true,
+            "type": "File",
+            "value-key": "[TAX_ID_MAP]",
+            "requires-inputs": ["parse_seqids"],
+            "disables-inputs": ["taxid"]
+        }
+    ],
+    "groups": [
+        {
+            "id": "flag_exclusion_group",
+            "members": [
+                "version",
+                "help",
+                "dbtype"
+            ],
+            "mutually-exclusive": true,
+            "name": "Group to exclude required inputs on informative flags",
+            "one-is-required": true
+        }
+    ],
+    "name": "makeblastdb",
+    "schema-version": "0.5",
+    "suggested-resources": {
+        "cpu-cores": 1,
+        "ram": 1,
+        "walltime-estimate": 60
+    },
+    "tags": {},
+    "tool-version": "v2.7.1"
+}

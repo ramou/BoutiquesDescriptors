@@ -1,0 +1,45 @@
+USAGE
+  blastdbcp [-h] [-help] [-db dbname] [-dbtype molecule_type]
+    -gilist input_file [-title database_title] [-membership_bits]
+    [-target_only] [-copy_only membership_bit] [-out database_name]
+    [-logfile File_Name] [-version]
+
+DESCRIPTION
+   Performs a (deep) copy of a subset of a BLAST database
+
+REQUIRED ARGUMENTS
+ -gilist <String>
+   Text or binary gi file to restrict the BLAST database provided in -db
+   argument
+
+OPTIONAL ARGUMENTS
+ -h
+   Print USAGE and DESCRIPTION;  ignore all other parameters
+ -help
+   Print USAGE, DESCRIPTION and ARGUMENTS; ignore all other parameters
+ -version
+   Print version number;  ignore other arguments
+
+ *** BLAST database options
+ -db <String>
+   BLAST database name
+   Default = `nr'
+ -dbtype <String, `guess', `nucl', `prot'>
+   Molecule type stored in BLAST database
+   Default = `prot'
+
+ *** Configuration options
+ -title <String>
+   Title for BLAST database
+ -membership_bits
+   Copy the membership bits
+ -target_only
+   Copy only entries specified in gi file
+ -copy_only <String, `pdb', `refseq', `swissprot'>
+   Membership bit by which copied entries are filtered
+
+ *** Output options
+ -out <String>
+   Name of BLAST database to be created
+ -logfile <File_Out>
+   File to which the program log should be redirected

@@ -1,0 +1,135 @@
+SAGE
+  datatool [-h] [-help] [-xmlhelp] -m moduleFile [-M externalModuleFile] [-i]
+    [-f moduleFile] [-fx dtdFile] [-fxs XMLSchemaFile] [-fd SpecificationDump]
+    [-ms moduleSuffix] [-v valueFile] [-vx valueFile] [-vj valueFile]
+    [-d valueFile] [-tvs traversalSpecFile] [-t type] [-dn filename] [-F]
+    [-p valueFile] [-px valueFile] [-pj valueFile] [-xmlns namespaceName]
+    [-e valueFile] [-sxo] [-sxi] [-oex exportSpec] [-od defFile] [-odi] [-odw]
+    [-ods] [-of listFile] [-oc basename] [-oA] [-ot types] [-ox types] [-oX]
+    [-on namespace] [-opm directory] [-oph directory] [-opc directory]
+    [-or prefix] [-orq] [-ors] [-orm] [-orA] [-ocvs] [-oR rootDirectory]
+    [-oDc] [-odx URL] [-lax_syntax] [-pch file] [-logfile File_Name]
+    [-conffile File_Name] [-version] [-version-full] [-dryrun]
+
+DESCRIPTION
+   work with ASN.1/XML data
+
+REQUIRED ARGUMENTS
+ -m <String>
+   module file(s)
+
+OPTIONAL ARGUMENTS
+ -h
+   Print USAGE and DESCRIPTION;  ignore all other parameters
+ -help
+   Print USAGE, DESCRIPTION and ARGUMENTS; ignore all other parameters
+ -xmlhelp
+   Print USAGE, DESCRIPTION and ARGUMENTS in XML format; ignore all other
+   parameters
+ -M <String>
+   external module file(s)
+   Default = `'
+ -i
+   ignore unresolved symbols
+ -f <File_Out>
+   write ASN.1 module file
+ -fx <File_Out>
+   write DTD file ("-fx m" writes modular DTD file)
+ -fxs <File_Out>
+   write XML Schema file ("-fxs m" writes modular Schema file)
+ -fd <File_Out>
+   write specification dump file (datatool internal format)
+ -ms <String>
+   suffix of modular DTD or Schema file name
+ -v <File_In>
+   read value in ASN.1 text format
+ -vx <File_In>
+   read value in XML format
+ -vj <File_In>
+   read value in JSON format
+ -d <File_In>
+   read value in ASN.1 binary format (-t is required)
+ -tvs <File_In>
+   read traversal specification file
+ -t <String>
+   binary value type (see "-d" argument)
+ -dn <String>
+   DTD module name in XML header (no extension). If empty, omit DOCTYPE line.
+ -F
+   read value completely into memory
+ -p <File_Out>
+   write value in ASN.1 text format
+ -px <File_Out>
+   write value in XML format
+ -pj <File_Out>
+   write value in JSON format
+ -xmlns <String>
+   XML namespace name
+ -e <File_Out>
+   write value in ASN.1 binary format
+ -sxo
+   no scope prefixes in XML output
+ -sxi
+   no scope prefixes in XML input
+ -oex <String>
+   class export specifier for MSVC
+ -od <File_In>
+   code definition file
+ -odi
+   silently ignore absent code definition file
+ -odw
+   issue a warning about absent code definition file
+ -ods
+   generate sample definition file
+ -of <File_Out>
+   write list of generated C++ files
+ -oc <String>
+   write combining C++ files
+ -oA
+   generate C++ files for all types
+ -ot <String>
+   generate C++ files for listed types
+ -ox <String>
+   exclude listed types from generation
+ -oX
+   turn off recursive type generation
+ -on <String>
+   default namespace
+ -opm <String>
+   directory for searching source modules
+ -oph <String>
+   directory for generated *.hpp files
+ -opc <String>
+   directory for generated *.cpp files
+ -or <String>
+   add prefix to generated file names
+ -orq
+   use quoted syntax form for generated include files
+ -ors
+   add source file dir to generated file names
+ -orm
+   add module name to generated file names
+ -orA
+   combine all -or* prefixes
+ -ocvs
+   create ".cvsignore" files
+ -oR <String>
+   set "-o*" arguments for NCBI directory tree
+ -oDc
+   turn on generation of DOXYGEN-style comments
+ -odx <String>
+   URL of documentation root folder (for DOXYGEN)
+ -lax_syntax
+   allow non-standard ASN.1 syntax accepted by asntool
+ -pch <String>
+   name of the precompiled header to include in all *.cpp files
+ -logfile <File_Out>
+   File to which the program log should be redirected
+ -conffile <File_In>
+   Program's configuration (registry) data file
+ -version
+   Print version number;  ignore other arguments
+ -version-full
+   Print extended version data;  ignore other arguments
+ -dryrun
+   Dry run the application: do nothing, only test all preconditions

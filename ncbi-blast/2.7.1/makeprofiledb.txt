@@ -1,0 +1,77 @@
+USAGE
+  makeprofiledb [-h] [-help] -in in_pssm_list [-binary]
+    [-title database_title] [-threshold word_score_threshold]
+    [-out database_name] [-max_file_sz max_file_size_in_bytes]
+    [-dbtype output_db_type] [-index create_index_files]
+    [-gapopen gap_open_penalty] [-gapextend gap_extend_penalty]
+    [-scale pssm_scale_factor] [-matrix matrix_name]
+    [-obsr_threshold observations_threshold]
+    [-exclude_invalid exclude_invalid] [-logfile File_Name] [-version]
+
+DESCRIPTION
+   Application to create databases for rpsblast, cobalt and deltablast,
+   version 2.7.1+
+
+REQUIRED ARGUMENTS
+ -in <File_In>
+   Input file that contains a list of smp files (delimited by space, tab or
+   newline)
+
+OPTIONAL ARGUMENTS
+ -h
+   Print USAGE and DESCRIPTION;  ignore all other parameters
+ -help
+   Print USAGE, DESCRIPTION and ARGUMENTS; ignore all other parameters
+ -version
+   Print version number;  ignore other arguments
+
+ *** Input options
+ -binary
+   Scoremats are in binary format
+
+ *** Configuration options
+ -title <String>
+   Title for database
+   Default = input file name provided to -in argument
+ -threshold <Real>
+   Minimum word score to add a word to the lookup table
+   Default = `9.82'
+
+ *** Output options
+ -out <String>
+   Name of database to be created
+   Default = input file name provided to -in argument
+ -max_file_sz <String>
+   Maximum file size for database files
+   Default = `1GB'
+ -dbtype <String, `cobalt', `delta', `rps'>
+   Output database type: cobalt, delta, rps
+   Default = `rps'
+ -index <Boolean>
+   Create Index Files
+   Default = `true'
+
+ *** Used only if scoremat files do not contain PSSM scores, ignored
+ *** otherwise.
+ -gapopen <Integer>
+   Cost to open a gap
+ -gapextend <Integer>
+   Cost to extend a gap,
+ -scale <Real>
+   Pssm Scale factor
+   Default = `100'
+ -matrix <String, `BLOSUM45', `BLOSUM50', `BLOSUM62', `BLOSUM80', `BLOSUM90',
+                  `PAM250', `PAM30', `PAM70'>
+   Scoring matrix name
+   Default = `BLOSUM62'
+
+ *** Delta Blast Options
+ -obsr_threshold <Real>
+   Exclude domains with with maximum number of independent observations below
+   this threshold
+   Default = `6'
+ -exclude_invalid <Boolean>
+   Exclude domains that do not pass validation test
+   Default = `true'
+ -logfile <File_Out>
+   File to which the program log should be redirected

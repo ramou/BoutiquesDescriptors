@@ -1,0 +1,44 @@
+USAGE
+  seqdb_perf [-h] [-help] [-db dbname] [-dbtype molecule_type]
+    [-scan_uncompressed] [-scan_compressed] [-get_metadata]
+    [-num_threads number] [-out output_file] [-logfile File_Name] [-version]
+
+DESCRIPTION
+   CSeqDB performance testing client
+
+OPTIONAL ARGUMENTS
+ -h
+   Print USAGE and DESCRIPTION;  ignore all other parameters
+ -help
+   Print USAGE, DESCRIPTION and ARGUMENTS; ignore all other parameters
+ -version
+   Print version number;  ignore other arguments
+
+ *** BLAST database options
+ -db <String>
+   BLAST database name
+   Default = `nr'
+ -dbtype <String, `guess', `nucl', `prot'>
+   Molecule type stored in BLAST database
+   Default = `guess'
+
+ *** Retrieval options
+ -scan_uncompressed
+   Do a full database scan of uncompressed sequence data
+    * Incompatible with:  scan_compressed, get_metadata
+ -scan_compressed
+   Do a full database scan of compressed sequence data
+    * Incompatible with:  scan_uncompressed, get_metadata
+ -get_metadata
+   Retrieve BLAST database metadata
+    * Incompatible with:  scan_compressed, scan_uncompressed
+ -num_threads <Integer, greater or equal to 0>
+   Number of threads to use (requires OpenMP)
+   Default = `1'
+
+ *** Output configuration options
+ -out <File_Out>
+   Output file name
+   Default = `-'
+ -logfile <File_Out>
+   File to which the program log should be redirected

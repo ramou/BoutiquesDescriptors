@@ -1,0 +1,63 @@
+USAGE
+  project_tree_builder [-h] [-help] [-xmlhelp] [-dll] [-nobuildptb] [-ext]
+    [-nws] [-extroot external_build_root] [-projtag project_tag] [-cfg] [-i]
+    [-dtdep] [-noadddep] [-libdep LibraryDependencies] [-args args_file]
+    [-logfile File_Name] [-conffile File_Name] [-version] [-version-full]
+    [-dryrun] <root> <subtree> <solution>
+
+DESCRIPTION
+   Unix projects tree builder application
+
+REQUIRED ARGUMENTS
+ root <String>
+   Root directory of the build tree. This directory ends with "c++".
+ subtree <String>
+   Subtree, or a file with a list of subtrees to build. Examples: src/corelib/
+   scripts/projects/ncbi_cpp.lst
+ solution <String>
+   MSVC Solution to build.
+
+OPTIONAL ARGUMENTS
+ -h
+   Print USAGE and DESCRIPTION;  ignore all other parameters
+ -help
+   Print USAGE, DESCRIPTION and ARGUMENTS; ignore all other parameters
+ -xmlhelp
+   Print USAGE, DESCRIPTION and ARGUMENTS in XML format; ignore all other
+   parameters
+ -dll
+   Dll(s) will be built instead of static libraries.
+ -nobuildptb
+   Exclude "build PTB" step from CONFIGURE project.
+ -ext
+   Use external libraries instead of missing in-tree ones.
+ -nws
+   Do not scan the whole source tree for missing projects.
+ -extroot <String>
+   Subtree in which to look for external libraries.
+ -projtag <String>
+   Expression. Include only projects that match. Example: "core && (test ||
+   !demo)"
+ -cfg
+   Show GUI to confirm configuration parameters (MS Windows only).
+ -i
+   Run interactively. Can only be used by PTB GUI shell!
+ -dtdep
+   Add dependency on datatool where needed.
+ -noadddep
+   Do not add missing dependencies.
+ -libdep <Boolean>
+   Analyze dependencies and generate library info for linker on Unix
+   Default = `true'
+ -args <String>
+   Read arguments from a file
+ -logfile <File_Out>
+   File to which the program log should be redirected
+ -conffile <File_In>
+   Program's configuration (registry) data file
+ -version
+   Print version number;  ignore other arguments
+ -version-full
+   Print extended version data;  ignore other arguments
+ -dryrun
+   Dry run the application: do nothing, only test all preconditions

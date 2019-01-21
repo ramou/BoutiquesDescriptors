@@ -1,0 +1,27 @@
+USAGE
+  seedtop [-h] [-help] [-pattern input_file] [-db database_name]
+    [-subject input_file] [-out output_file] [-version]
+
+DESCRIPTION
+   Application to find pattern in BLAST databases or subject sequences,
+   version 2.7.1+
+
+OPTIONAL ARGUMENTS
+ -h
+   Print USAGE and DESCRIPTION;  ignore all other parameters
+ -help
+   Print USAGE, DESCRIPTION and ARGUMENTS; ignore all other parameters
+ -pattern <File_In>
+   File containing the patterns to be searched
+   Default = `-'
+ -db <String>
+   Name of BLAST database to be searched
+    * Incompatible with:  subject
+ -subject <File_In>
+   File containing the subject sequences in FASTA format
+    * Incompatible with:  db
+ -out <File_Out>
+   Output file to include results of the search
+   Default = `-'
+ -version
+   Print version number;  ignore other arguments

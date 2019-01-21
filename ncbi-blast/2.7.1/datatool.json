@@ -1,0 +1,47 @@
+{
+    "command-line": "init_genpipes -a /cvmfs-cache/cvmfs/shared/ -c /etc/parrot/ /cvmfs/soft.mugqic/CentOS6/software/blast/ncbi-blast-2.7.1+/bin/datatool",
+    "container-image": {
+        "type": "docker",
+        "image": "c3genomics/genpipes",
+        "container-opts": [
+            "--privileged",
+            "-v /tmp:/tmp",
+            "--network host -it",
+            "-w $PWD",
+            "-v $HOME:$HOME",
+            "--user $UID:$GROUPS",
+            "-v /etc/group:/etc/group",
+            "-v /etc/passwd:/etc/passwd"
+        ]
+    },
+    "description": "work with ASN.1/XML data",
+    "inputs": [
+        {
+            "command-line-flag": "-h",
+            "description": "A flag which displays help message",
+            "id": "help",
+            "name": "Help flag",
+            "optional": true,
+            "type": "Flag",
+            "value-key": "[fHELP]"
+        },
+        {
+            "command-line-flag": "-version",
+            "description": "Print version number; ignore other arguments",
+            "id": "version",
+            "name": "Print version number",
+            "optional": true,
+            "type": "Flag",
+            "value-key": "[fVERSION]"
+        }
+    ],
+    "name": "datatool",
+    "schema-version": "0.1",
+    "suggested-resources": {
+        "cpu-cores": 1,
+        "ram": 1,
+        "walltime-estimate": 60
+    },
+    "tags": {},
+    "tool-version": "v2.7.1"
+}

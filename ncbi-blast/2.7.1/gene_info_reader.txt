@@ -1,0 +1,32 @@
+USAGE
+  gene_info_reader [-h] [-help] [-xmlhelp] [-gi2id Gi] [-id2gi GeneID]
+    [-gi2info Gi] [-id2info GeneID] [-version-full] [-dryrun]
+
+DESCRIPTION
+   The program can be used to convert Gene IDs to/from Gis, and print Gene
+   Info lines given Gis or Gene IDs.
+
+OPTIONAL ARGUMENTS
+ -h
+   Print USAGE and DESCRIPTION;  ignore all other parameters
+ -help
+   Print USAGE, DESCRIPTION and ARGUMENTS; ignore all other parameters
+ -xmlhelp
+   Print USAGE, DESCRIPTION and ARGUMENTS in XML format; ignore all other
+   parameters
+ -gi2id <Integer>
+   The Gi to convert to a Gene ID
+   Default = `0'
+ -id2gi <Integer>
+   The Gene ID to convert to a Gi
+   Default = `0'
+ -gi2info <Integer>
+   The Gi to print the Gene Info line(s) for
+   Default = `0'
+ -id2info <Integer>
+   The Gene ID to print the Gene Info line for
+   Default = `0'
+ -version-full
+   Print extended version data;  ignore other arguments
+ -dryrun
+   Dry run the application: do nothing, only test all preconditions
