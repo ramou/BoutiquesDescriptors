@@ -1,5 +1,5 @@
 {
-    "command-line": "init_genpipes -a /cvmfs-cache/cvmfs/shared/ -c /etc/parrot/ /cvmfs/soft.mugqic/CentOS6/software/blast/ncbi-blast-2.7.1+/bin/blast_formatter",
+    "command-line": "init_genpipes -a /cvmfs-cache/cvmfs/shared/ -c /etc/parrot/ /cvmfs/soft.mugqic/CentOS6/software/blast/ncbi-blast-2.7.1+/bin/blast_formatter [fHELP] [fHELPV] [RID] [ARCHIVE] [OUTFORMAT] [fSHOWGIS] [NUM_DESCRIPTIONS] [NUM_ALIGNMENTS] [LINE_LENGTH] [fHTML] [MAX_TARGET_SEQS] [OUT] [fPARSE_DEFLINES] [fVERSION]",
     "container-image": {
         "type": "docker",
         "image": "c3genomics/genpipes",
@@ -18,12 +18,21 @@
     "inputs": [
         {
             "command-line-flag": "-h",
-            "description": "A flag which displays help message",
+            "description": "Print USAGE, DESCRIPTION; ignore all other parameters",
             "id": "help",
             "name": "Help flag",
             "optional": true,
             "type": "Flag",
             "value-key": "[fHELP]"
+        },
+        {
+            "command-line-flag": "-help",
+            "description": "Print USAGE, DESCRIPTION and ARGUMENTS; ignore all other parameters",
+            "id": "helpv",
+            "name": "Verbose Help flag",
+            "optional": true,
+            "type": "Flag",
+            "value-key": "[fHELPV]"
         },
         {
             "command-line-flag": "-version",
@@ -33,6 +42,144 @@
             "optional": true,
             "type": "Flag",
             "value-key": "[fVERSION]"
+        },
+        {
+            "command-line-flag": "-show_gis",
+            "description": "Show NCBI GIs in deflines?",
+            "id": "show_gis",
+            "name": "Show NCBI GIs",
+            "optional": true,
+            "type": "Flag",
+            "value-key": "[fSHOWGIS]"
+        },
+        {
+            "command-line-flag": "-html",
+            "description": "Produce HTML Output",
+            "id": "html",
+            "name": "Show HTML",
+            "optional": true,
+            "type": "Flag",
+            "value-key": "[fHTML]"
+        },
+        {
+            "command-line-flag": "-parse_deflines",
+            "description": "Should the query and subject defline(s) be parsed?",
+            "id": "parse_deflines",
+            "name": "Parse Deflines",
+            "optional": true,
+            "type": "Flag",
+            "value-key": "[fPARSE_DEFLINES]"
+        },
+        {
+            "command-line-flag": "-rid",
+            "description": "BLAST Request ID (RID)",
+            "id": "rid",
+            "name": "BLAST Request ID",
+            "optional": true,
+            "type": "String",
+            "value-key": "[RID]"
+        },
+        {
+            "command-line-flag": "-archive",
+            "description": "File containing BLAST Archive format in ASN.1 (i.e.: output format 11)",
+            "id": "archive",
+            "name": "Blast Archive File",
+            "optional": true,
+            "type": "File",
+            "value-key": "[ARCHIVE]"
+        },
+        {
+            "command-line-flag": "-outfmt",
+            "description": "   alignment view options:\n     0 = Pairwise,\n     1 = Query-anchored showing identities,\n     2 = Query-anchored no identities,\n     3 = Flat query-anchored showing identities,\n     4 = Flat query-anchored no identities,\n     5 = BLAST XML,\n     6 = Tabular,\n     7 = Tabular with comment lines,\n     8 = Seqalign (Text ASN.1),\n     9 = Seqalign (Binary ASN.1),\n    10 = Comma-separated values,\n    11 = BLAST archive (ASN.1),\n    12 = Seqalign (JSON),\n    13 = Multiple-file BLAST JSON,\n    14 = Multiple-file BLAST XML2,\n    15 = Single-file BLAST JSON,\n    16 = Single-file BLAST XML2,\n    17 = Sequence Alignment/Map (SAM),\n    18 = Organism Report\n\n   Options 6, 7, 10 and 17 can be additionally configured to produce\n   a custom format specified by space delimited format specifiers.\n   The supported format specifiers for options 6, 7 and 10 are:\n            qseqid means Query Seq-id\n               qgi means Query GI\n              qacc means Query accesion\n           qaccver means Query accesion.version\n              qlen means Query sequence length\n            sseqid means Subject Seq-id\n         sallseqid means All subject Seq-id(s), separated by a ';'\n               sgi means Subject GI\n            sallgi means All subject GIs\n              sacc means Subject accession\n           saccver means Subject accession.version\n           sallacc means All subject accessions\n              slen means Subject sequence length\n            qstart means Start of alignment in query\n              qend means End of alignment in query\n            sstart means Start of alignment in subject\n              send means End of alignment in subject\n              qseq means Aligned part of query sequence\n              sseq means Aligned part of subject sequence\n            evalue means Expect value\n          bitscore means Bit score\n             score means Raw score\n            length means Alignment length\n            pident means Percentage of identical matches\n            nident means Number of identical matches\n          mismatch means Number of mismatches\n          positive means Number of positive-scoring matches\n           gapopen means Number of gap openings\n              gaps means Total number of gaps\n              ppos means Percentage of positive-scoring matches\n            frames means Query and subject frames separated by a '/'\n            qframe means Query frame\n            sframe means Subject frame\n              btop means Blast traceback operations (BTOP)\n            staxid means Subject Taxonomy ID\n          ssciname means Subject Scientific Name\n          scomname means Subject Common Name\n        sblastname means Subject Blast Name\n         sskingdom means Subject Super Kingdom\n           staxids means unique Subject Taxonomy ID(s), separated by a ';'\n                         (in numerical order)\n         sscinames means unique Subject Scientific Name(s), separated by a ';'\n         scomnames means unique Subject Common Name(s), separated by a ';'\n        sblastnames means unique Subject Blast Name(s), separated by a ';'\n                         (in alphabetical order)\n        sskingdoms means unique Subject Super Kingdom(s), separated by a ';'\n                         (in alphabetical order)\n            stitle means Subject Title\n        salltitles means All Subject Title(s), separated by a '<>'\n           sstrand means Subject Strand\n             qcovs means Query Coverage Per Subject\n           qcovhsp means Query Coverage Per HSP\n            qcovus means Query Coverage Per Unique Subject (blastn only)\n   When not provided, the default value is:\n   'qaccver saccver pident length mismatch gapopen qstart qend sstart send\n   evalue bitscore', which is equivalent to the keyword 'std'\n   The supported format specifier for option 17 is:\n                SQ means Include Sequence Data\n                SR means Subject as Reference Seq\n  Default = `0'",
+            "id": "outfmt",
+            "name": "Alignment View Options",
+            "optional": true,
+            "type": "String",
+            "value-key": "[OUTFORMAT]"
+        },
+        {
+            "command-line-flag": "-num_descriptions",
+            "description": "   Number of database sequences to show one-line descriptions for\n   Not applicable for outfmt > 4\n   Default = `500'",
+            "id": "num_descriptions",
+            "name": "Number of Sequence Descriptions to Show",
+            "optional": true,
+            "type": "Number",
+            "minimum": 0,
+            "value-key": "[NUM_DESCRIPTIONS]"
+        },
+        {
+            "command-line-flag": "-num_alignments",
+            "description": "   Number of database sequences to show alignments for\n   Default = `250'",
+            "id": "num_alignments",
+            "name": "Number of Sequence Alignments to Show",
+            "optional": true,
+            "type": "Number",
+            "minimum": 0,
+            "value-key": "[NUM_ALIGNMENTS]"
+        },
+        {
+            "command-line-flag": "-line_length",
+            "description": "   Line length for formatting alignments\n   Not applicable for outfmt > 4\n   Default = `60'",
+            "id": "line_length",
+            "name": "Line Length",
+            "optional": true,
+            "type": "Number",
+            "minimum": 1,
+            "value-key": "[LINE_LENGTH]"
+        },
+        {
+            "command-line-flag": "-max_target_seqs",
+            "description": "   Maximum number of aligned sequences to keep\n   Not applicable for outfmt <= 4\n   Default = `500'",
+            "id": "max_target_seqs",
+            "name": "Maximum Number of Aligned Sequences to Keep",
+            "optional": true,
+            "type": "Number",
+            "minimum": 1,
+            "value-key": "[MAX_TARGET_SEQS]"
+        },
+        {
+            "command-line-flag": "-out",
+            "description": "   Output file name\n   Default = `-'",
+            "id": "out",
+            "name": "Output file name",
+            "optional": true,
+            "type": "File",
+            "value-key": "[OUT]"
+        }
+    ],
+    "groups": [
+        {
+            "id": "description_exclusion_group",
+            "members": [
+                "max_target_seqs",
+                "num_descriptions"
+            ],
+            "mutually-exclusive": true,
+            "name": "Group to prevent max_target_seqs appearing with num_descriptions",
+            "one-is-required": true
+        },
+        {
+            "id": "alignment_exclusion_group",
+            "members": [
+                "max_target_seqs",
+                "num_alignments"
+            ],
+            "mutually-exclusive": true,
+            "name": "Group to prevent max_target_seqs appearing with num_alignments",
+            "one-is-required": true
+        },
+        {
+            "id": "flag_exclusion_group",
+            "members": [
+				"rid",
+                "archive",
+                "version",
+                "help",
+                "helpv"
+            ],
+            "mutually-exclusive": true,
+            "name": "Group to exclude required inputs on informative flags",
+            "one-is-required": true
         }
     ],
     "name": "blast_formatter",

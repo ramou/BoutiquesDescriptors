@@ -1,5 +1,5 @@
 # NCBI Blast 2.7.1
- - [ ] [blast_formatter](https://github.com/ramou/BoutiquesDescriptors/blob/develop/ncbi-blast/2.7.1/blast_formatter.json)
+ - [x] [blast_formatter](https://github.com/ramou/BoutiquesDescriptors/blob/develop/ncbi-blast/2.7.1/blast_formatter.json)
  - [ ] [blastdbcheck](https://github.com/ramou/BoutiquesDescriptors/blob/develop/ncbi-blast/2.7.1/blastdbcheck.json)
  - [ ] [blastdbcmd](https://github.com/ramou/BoutiquesDescriptors/blob/develop/ncbi-blast/2.7.1/blastdbcmd.json)
  - [ ] [blastdbcp](https://github.com/ramou/BoutiquesDescriptors/blob/develop/ncbi-blast/2.7.1/blastdbcp.json)

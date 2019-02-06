@@ -1,5 +1,5 @@
 {
-    "command-line": "init_genpipes -a /cvmfs-cache/cvmfs/shared/ -c /etc/parrot/ /cvmfs/soft.mugqic/CentOS6/software/blast/ncbi-blast-2.7.1+/bin/makeblastdb [fHELP] [IN] [INPUT_TYPE] [DBTYPE] [TITLE] [fPARSE_SEQIDS] [fHASHINDEX] [MASK_DATA_FILES] [MASK_ALGO_IDS] [MASK_DESC] [fGI_MASK] [GI_MASK_NAME] [OUT] [MAX_FILE_SIZE] [LOG_FILE] [TAX_ID] [TAX_ID_MAP] [fVERSION]",
+    "command-line": "init_genpipes -a /cvmfs-cache/cvmfs/shared/ -c /etc/parrot/ /cvmfs/soft.mugqic/CentOS6/software/blast/ncbi-blast-2.7.1+/bin/makeblastdb [fHELP] [fHELPV] [IN] [INPUT_TYPE] [DBTYPE] [TITLE] [fPARSE_SEQIDS] [fHASHINDEX] [MASK_DATA_FILES] [MASK_ALGO_IDS] [MASK_DESC] [fGI_MASK] [GI_MASK_NAME] [OUT] [MAX_FILE_SIZE] [LOG_FILE] [TAX_ID] [TAX_ID_MAP] [fVERSION]",
     "container-image": {
         "type": "docker",
         "image": "c3genomics/genpipes",
@@ -18,12 +18,21 @@
     "inputs": [
         {
             "command-line-flag": "-h",
-            "description": "A flag which displays help message",
+            "description": "Print USAGE, DESCRIPTION; ignore all other parameters",
             "id": "help",
             "name": "Help flag",
             "optional": true,
             "type": "Flag",
             "value-key": "[fHELP]"
+        },
+        {
+            "command-line-flag": "-help",
+            "description": "Print USAGE, DESCRIPTION and ARGUMENTS; ignore all other parameters",
+            "id": "helpv",
+            "name": "Verbose Help flag",
+            "optional": true,
+            "type": "Flag",
+            "value-key": "[fHELPV]"
         },
         {
             "command-line-flag": "-version",
@@ -99,9 +108,9 @@
         },
         {
             "command-line-flag": "-out",
-            "description": "It will use the input filename, but is required if there are multiple input files/databases",
+            "description": "   Name of BLAST database to be created\n   Default = input file name provided to -in argument\n   Required if multiple file(s)/database(s)\n   are provided as input",
             "id": "out",
-            "name": "Type of the data specified in input_file",
+            "name": "Name of BLAST database to be created",
             "optional": true,
             "type": "File",
             "value-key": "[OUT]"
@@ -210,6 +219,7 @@
             "members": [
                 "version",
                 "help",
+                "helpv",
                 "dbtype"
             ],
             "mutually-exclusive": true,
