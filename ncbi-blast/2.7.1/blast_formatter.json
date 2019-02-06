@@ -1,5 +1,5 @@
 {
-    "command-line": "init_genpipes -a /cvmfs-cache/cvmfs/shared/ -c /etc/parrot/ /cvmfs/soft.mugqic/CentOS6/software/blast/ncbi-blast-2.7.1+/bin/blast_formatter [fHELP] [fHELPV] [RID] [ARCHIVE] [OUTFORMAT] [fSHOWGIS] [NUM_DESCRIPTIONS] [NUM_ALIGNMENTS] [LINE_LENGTH] [fHTML] [MAX_TARGET_SEQS] [OUT] [fPARSE_DEFLINES] [fVERSION]",
+    "command-line": "init_genpipes -a /cvmfs-cache/cvmfs/shared/ -c /etc/parrot/ /cvmfs/soft.mugqic/CentOS6/software/blast/ncbi-blast-2.7.1+/bin/blast_formatter [RID] [ARCHIVE] [OUTFORMAT] [fSHOWGIS] [NUM_DESCRIPTIONS] [NUM_ALIGNMENTS] [LINE_LENGTH] [fHTML] [MAX_TARGET_SEQS] [OUT] [fPARSE_DEFLINES]",
     "container-image": {
         "type": "docker",
         "image": "c3genomics/genpipes",
@@ -16,33 +16,6 @@
     },
     "description": "Stand-alone BLAST formatter client, version 2.7.1+",
     "inputs": [
-        {
-            "command-line-flag": "-h",
-            "description": "Print USAGE, DESCRIPTION; ignore all other parameters",
-            "id": "help",
-            "name": "Help flag",
-            "optional": true,
-            "type": "Flag",
-            "value-key": "[fHELP]"
-        },
-        {
-            "command-line-flag": "-help",
-            "description": "Print USAGE, DESCRIPTION and ARGUMENTS; ignore all other parameters",
-            "id": "helpv",
-            "name": "Verbose Help flag",
-            "optional": true,
-            "type": "Flag",
-            "value-key": "[fHELPV]"
-        },
-        {
-            "command-line-flag": "-version",
-            "description": "Print version number; ignore other arguments",
-            "id": "version",
-            "name": "Print version number",
-            "optional": true,
-            "type": "Flag",
-            "value-key": "[fVERSION]"
-        },
         {
             "command-line-flag": "-show_gis",
             "description": "Show NCBI GIs in deflines?",
@@ -77,6 +50,7 @@
             "name": "BLAST Request ID",
             "optional": true,
             "type": "String",
+            "disable-inputs": ["archive"],
             "value-key": "[RID]"
         },
         {
@@ -95,6 +69,7 @@
             "name": "Alignment View Options",
             "optional": true,
             "type": "String",
+            "default-value": "0",
             "value-key": "[OUTFORMAT]"
         },
         {
@@ -105,6 +80,7 @@
             "optional": true,
             "type": "Number",
             "minimum": 0,
+            "default-value": 500,
             "value-key": "[NUM_DESCRIPTIONS]"
         },
         {
@@ -114,6 +90,7 @@
             "name": "Number of Sequence Alignments to Show",
             "optional": true,
             "type": "Number",
+            "default-value": 250,
             "minimum": 0,
             "value-key": "[NUM_ALIGNMENTS]"
         },
@@ -125,6 +102,7 @@
             "optional": true,
             "type": "Number",
             "minimum": 1,
+            "default-value": 60,
             "value-key": "[LINE_LENGTH]"
         },
         {
@@ -135,7 +113,8 @@
             "optional": true,
             "type": "Number",
             "minimum": 1,
-            "value-key": "[MAX_TARGET_SEQS]"
+            "value-key": "[MAX_TARGET_SEQS]",
+            "disables-inputs": ["num_descriptions", "num_alignments"]
         },
         {
             "command-line-flag": "-out",
@@ -143,43 +122,9 @@
             "id": "out",
             "name": "Output file name",
             "optional": true,
-            "type": "File",
+            "type": "String",
+            "default-value": "-",
             "value-key": "[OUT]"
-        }
-    ],
-    "groups": [
-        {
-            "id": "description_exclusion_group",
-            "members": [
-                "max_target_seqs",
-                "num_descriptions"
-            ],
-            "mutually-exclusive": true,
-            "name": "Group to prevent max_target_seqs appearing with num_descriptions",
-            "one-is-required": true
-        },
-        {
-            "id": "alignment_exclusion_group",
-            "members": [
-                "max_target_seqs",
-                "num_alignments"
-            ],
-            "mutually-exclusive": true,
-            "name": "Group to prevent max_target_seqs appearing with num_alignments",
-            "one-is-required": true
-        },
-        {
-            "id": "flag_exclusion_group",
-            "members": [
-				"rid",
-                "archive",
-                "version",
-                "help",
-                "helpv"
-            ],
-            "mutually-exclusive": true,
-            "name": "Group to exclude required inputs on informative flags",
-            "one-is-required": true
         }
     ],
     "name": "blast_formatter",

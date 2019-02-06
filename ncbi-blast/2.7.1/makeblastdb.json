@@ -1,5 +1,5 @@
 {
-    "command-line": "init_genpipes -a /cvmfs-cache/cvmfs/shared/ -c /etc/parrot/ /cvmfs/soft.mugqic/CentOS6/software/blast/ncbi-blast-2.7.1+/bin/makeblastdb [fHELP] [fHELPV] [IN] [INPUT_TYPE] [DBTYPE] [TITLE] [fPARSE_SEQIDS] [fHASHINDEX] [MASK_DATA_FILES] [MASK_ALGO_IDS] [MASK_DESC] [fGI_MASK] [GI_MASK_NAME] [OUT] [MAX_FILE_SIZE] [LOG_FILE] [TAX_ID] [TAX_ID_MAP] [fVERSION]",
+    "command-line": "init_genpipes -a /cvmfs-cache/cvmfs/shared/ -c /etc/parrot/ /cvmfs/soft.mugqic/CentOS6/software/blast/ncbi-blast-2.7.1+/bin/makeblastdb [IN] [INPUT_TYPE] [DBTYPE] [TITLE] [fPARSE_SEQIDS] [fHASHINDEX] [MASK_DATA_FILES] [MASK_ALGO_IDS] [MASK_DESC] [fGI_MASK] [GI_MASK_NAME] [OUT] [MAX_FILE_SIZE] [LOG_FILE] [TAX_ID] [TAX_ID_MAP]",
     "container-image": {
         "type": "docker",
         "image": "c3genomics/genpipes",
@@ -16,33 +16,6 @@
     },
     "description": "Application to create BLAST databases, version 2.7.1+",
     "inputs": [
-        {
-            "command-line-flag": "-h",
-            "description": "Print USAGE, DESCRIPTION; ignore all other parameters",
-            "id": "help",
-            "name": "Help flag",
-            "optional": true,
-            "type": "Flag",
-            "value-key": "[fHELP]"
-        },
-        {
-            "command-line-flag": "-help",
-            "description": "Print USAGE, DESCRIPTION and ARGUMENTS; ignore all other parameters",
-            "id": "helpv",
-            "name": "Verbose Help flag",
-            "optional": true,
-            "type": "Flag",
-            "value-key": "[fHELPV]"
-        },
-        {
-            "command-line-flag": "-version",
-            "description": "Print version number; ignore other arguments",
-            "id": "version",
-            "name": "Print version number",
-            "optional": true,
-            "type": "Flag",
-            "value-key": "[fVERSION]"
-        },
         {
             "command-line-flag": "-parse_seqids",
             "description": "A flag which enables parsing of sequence ids",
@@ -89,7 +62,7 @@
             "description": "Molecule type of target db",
             "id": "dbtype",
             "name": "Database Type",
-            "optional": true,
+            "optional": false,
             "type": "String",
             "value-choices": [
                 "nucl",
@@ -122,7 +95,15 @@
             "name": "Type of the data specified in input_file",
             "optional": true,
             "type": "String",
+            "value-choices": [
+                "asn1_bin",
+                "asn1_txt",
+                "blastdb",
+                "fasta"
+            ],
+            "default-value": "fasta",
             "value-key": "[INPUT_TYPE]"
+            
         },
         {
             "command-line-flag": "-title",
@@ -179,6 +160,7 @@
             "name": "Max database file size",
             "optional": true,
             "type": "String",
+            "default-value": "1GB",
             "value-key": "[MAX_FILE_SIZE]"
         },
         {
@@ -211,20 +193,6 @@
             "value-key": "[TAX_ID_MAP]",
             "requires-inputs": ["parse_seqids"],
             "disables-inputs": ["taxid"]
-        }
-    ],
-    "groups": [
-        {
-            "id": "flag_exclusion_group",
-            "members": [
-                "version",
-                "help",
-                "helpv",
-                "dbtype"
-            ],
-            "mutually-exclusive": true,
-            "name": "Group to exclude required inputs on informative flags",
-            "one-is-required": true
         }
     ],
     "name": "makeblastdb",
