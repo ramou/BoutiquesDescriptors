@@ -1,4 +1,7 @@
 {
+    "tool-version": "v2.7.1",
+    "name": "blast_formatter",
+    "author": "Altschul et al.",
     "command-line": "init_genpipes -a /cvmfs-cache/cvmfs/shared/ -c /etc/parrot/ /cvmfs/soft.mugqic/CentOS6/software/blast/ncbi-blast-2.7.1+/bin/blast_formatter [RID] [ARCHIVE] [OUTFORMAT] [fSHOWGIS] [NUM_DESCRIPTIONS] [NUM_ALIGNMENTS] [LINE_LENGTH] [fHTML] [MAX_TARGET_SEQS] [OUT] [fPARSE_DEFLINES]",
     "container-image": {
         "type": "docker",
@@ -127,13 +130,11 @@
             "value-key": "[OUT]"
         }
     ],
-    "name": "blast_formatter",
     "schema-version": "0.1",
     "suggested-resources": {
         "cpu-cores": 1,
         "ram": 1,
         "walltime-estimate": 60
     },
-    "tags": {},
-    "tool-version": "v2.7.1"
+    "tags": {}
 }
