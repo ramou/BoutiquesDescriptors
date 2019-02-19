@@ -11,7 +11,7 @@
  - [ ] [deltablast](https://github.com/ramou/BoutiquesDescriptors/blob/develop/ncbi-blast/2.7.1/deltablast.json)
  - [ ] [dustmasker](https://github.com/ramou/BoutiquesDescriptors/blob/develop/ncbi-blast/2.7.1/dustmasker.json)
  - [ ] [gene_info_reader](https://github.com/ramou/BoutiquesDescriptors/blob/develop/ncbi-blast/2.7.1/gene_info_reader.json)
- - [x] [makeblastdb](https://github.com/ramou/BoutiquesDescriptors/blob/develop/ncbi-blast/2.7.1/makeblastdb.json) (#2)
+ - [x] [makeblastdb](https://github.com/ramou/BoutiquesDescriptors/blob/develop/ncbi-blast/2.7.1/makeblastdb.json) [#2](https://github.com/ramou/BoutiquesDescriptors/issues/2)
  - [ ] [makembindex](https://github.com/ramou/BoutiquesDescriptors/blob/develop/ncbi-blast/2.7.1/makembindex.json)
  - [ ] [makeprofiledb](https://github.com/ramou/BoutiquesDescriptors/blob/develop/ncbi-blast/2.7.1/makeprofiledb.json)
  - [ ] [project_tree_builder](https://github.com/ramou/BoutiquesDescriptors/blob/develop/ncbi-blast/2.7.1/project_tree_builder.json)
