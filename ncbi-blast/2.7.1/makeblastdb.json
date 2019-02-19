@@ -1,4 +1,7 @@
 {
+    "name": "makeblastdb",
+    "tool-version": "v2.7.1",
+    "author": "Altschul et al.",
     "command-line": "init_genpipes -a /cvmfs-cache/cvmfs/shared/ -c /etc/parrot/ /cvmfs/soft.mugqic/CentOS6/software/blast/ncbi-blast-2.7.1+/bin/makeblastdb [IN] [INPUT_TYPE] [DBTYPE] [TITLE] [fPARSE_SEQIDS] [fHASHINDEX] [MASK_DATA_FILES] [MASK_ALGO_IDS] [MASK_DESC] [fGI_MASK] [GI_MASK_NAME] [OUT] [MAX_FILE_SIZE] [LOG_FILE] [TAX_ID] [TAX_ID_MAP]",
     "container-image": {
         "type": "docker",
@@ -221,6 +224,5 @@
         "ram": 1,
         "walltime-estimate": 60
     },
-    "tags": {},
-    "tool-version": "v2.7.1"
+    "tags": {}
 }
