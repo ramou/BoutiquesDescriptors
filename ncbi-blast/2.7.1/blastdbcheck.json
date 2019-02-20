@@ -2,20 +2,11 @@
     "name": "blastdbcheck",
     "tool-version": "v2.7.1",
     "author": "Altschul et al.",
-    "command-line": "init_genpipes -a /cvmfs-cache/cvmfs/shared/ -c /etc/parrot/ /cvmfs/soft.mugqic/CentOS6/software/blast/ncbi-blast-2.7.1+/bin/blastdbcheck [DB] [DBTYPE] [DIR] [RECURSIVE] [VERBOSITY] [FULL] [STRIDE] [RANDOM] [ENDS] [NO_ISAM] [LEGACY] [MUST_HAVE_TAXIDS] [CDD_DELTA]",
+    "command-line": "init_genpipes -a /tmp/$USER/cvmfs-cache -c /etc/parrot/ /cvmfs/soft.mugqic/CentOS6/software/blast/ncbi-blast-2.7.1+/bin/blastdbcheck [DB] [DBTYPE] [DIR] [RECURSIVE] [VERBOSITY] [FULL] [STRIDE] [RANDOM] [ENDS] [NO_ISAM] [LEGACY] [MUST_HAVE_TAXIDS] [CDD_DELTA]",
     "container-image": {
-        "type": "docker",
+        "type": "singularity",
         "image": "c3genomics/genpipes",
-        "container-opts": [
-            "--privileged",
-            "-v /tmp:/tmp",
-            "--network host -it",
-            "-w $PWD",
-            "-v $HOME:$HOME",
-            "--user $UID:$GROUPS",
-            "-v /etc/group:/etc/group",
-            "-v /etc/passwd:/etc/passwd"
-        ]
+        "index": "docker://"
     },
     "description": "BLAST database integrity and validity checking application",
     "inputs": [

@@ -1,18 +1,9 @@
 {
-    "command-line": "init_genpipes -a /cvmfs-cache/cvmfs/shared/ -c /etc/parrot/ /cvmfs/soft.mugqic/CentOS6/software/blast/ncbi-blast-2.7.1+/bin/makeprofiledb",
+    "command-line": "init_genpipes -a /tmp/$USER/cvmfs-cache -c /etc/parrot/ /cvmfs/soft.mugqic/CentOS6/software/blast/ncbi-blast-2.7.1+/bin/makeprofiledb",
     "container-image": {
-        "type": "docker",
+        "type": "singularity",
         "image": "c3genomics/genpipes",
-        "container-opts": [
-            "--privileged",
-            "-v /tmp:/tmp",
-            "--network host -it",
-            "-w $PWD",
-            "-v $HOME:$HOME",
-            "--user $UID:$GROUPS",
-            "-v /etc/group:/etc/group",
-            "-v /etc/passwd:/etc/passwd"
-        ]
+        "index": "docker://"
     },
     "description": "Application to create databases for rpsblast, cobalt and deltablast, version 2.7.1+",
     "inputs": [

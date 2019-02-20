@@ -2,20 +2,11 @@
     "tool-version": "v2.7.1",
     "name": "blast_formatter",
     "author": "Altschul et al.",
-    "command-line": "init_genpipes -a /cvmfs-cache/cvmfs/shared/ -c /etc/parrot/ /cvmfs/soft.mugqic/CentOS6/software/blast/ncbi-blast-2.7.1+/bin/blast_formatter [RID] [ARCHIVE] [OUTFORMAT] [fSHOWGIS] [NUM_DESCRIPTIONS] [NUM_ALIGNMENTS] [LINE_LENGTH] [fHTML] [MAX_TARGET_SEQS] [OUT] [fPARSE_DEFLINES]",
+    "command-line": "init_genpipes -a /tmp/$USER/cvmfs-cache -c /etc/parrot/ /cvmfs/soft.mugqic/CentOS6/software/blast/ncbi-blast-2.7.1+/bin/blast_formatter [RID] [ARCHIVE] [OUTFORMAT] [fSHOWGIS] [NUM_DESCRIPTIONS] [NUM_ALIGNMENTS] [LINE_LENGTH] [fHTML] [MAX_TARGET_SEQS] [OUT] [fPARSE_DEFLINES]",
     "container-image": {
-        "type": "docker",
+        "type": "singularity",
         "image": "c3genomics/genpipes",
-        "container-opts": [
-            "--privileged",
-            "-v /tmp:/tmp",
-            "--network host -it",
-            "-w $PWD",
-            "-v $HOME:$HOME",
-            "--user $UID:$GROUPS",
-            "-v /etc/group:/etc/group",
-            "-v /etc/passwd:/etc/passwd"
-        ]
+        "index": "docker://"
     },
     "description": "Stand-alone BLAST formatter client, version 2.7.1+",
     "inputs": [
