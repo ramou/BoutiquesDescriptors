@@ -78,7 +78,7 @@
             "description": "   Name of BLAST database to be created\n   Default = input file name provided to -in argument\n   Required if multiple file(s)/database(s)\n   are provided as input",
             "id": "out",
             "name": "Name of BLAST database to be created",
-            "optional": true,
+            "optional": false,
             "type": "File",
             "value-key": "[OUT]"
         },
@@ -97,7 +97,6 @@
             ],
             "default-value": "fasta",
             "value-key": "[INPUT_TYPE]"
-            
         },
         {
             "command-line-flag": "-title",
@@ -187,6 +186,26 @@
             "value-key": "[TAX_ID_MAP]",
             "requires-inputs": ["parse_seqids"],
             "disables-inputs": ["taxid"]
+        }
+    ],
+    "output-files": [
+        {
+            "id": "outputdbphr",
+            "name": "Output Database Headers",
+            "path-template": "[OUT].phr",
+            "optional": false
+        },
+        {
+            "id": "outputdbpsq",
+            "name": "Output Database Binary Sequences",
+            "path-template": "[OUT].psq",
+            "optional": false
+        },
+        {
+            "id": "outputdbpin",
+            "name": "Output Database Index File",
+            "path-template": "[OUT].pin",
+            "optional": false
         }
     ],
     "schema-version": "0.5",
