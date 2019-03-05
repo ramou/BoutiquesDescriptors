@@ -9,6 +9,7 @@
         "index": "docker://"
     },
     "description": "Stand-alone BLAST formatter client, version 2.7.1+",
+    "doi": "10.5281/zenodo.2584326",
     "inputs": [
         {
             "command-line-flag": "-show_gis",
