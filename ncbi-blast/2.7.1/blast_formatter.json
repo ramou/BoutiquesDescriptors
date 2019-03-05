@@ -44,7 +44,7 @@
             "name": "BLAST Request ID",
             "optional": true,
             "type": "String",
-            "disable-inputs": ["archive"],
+            "disables-inputs": ["archive"],
             "value-key": "[RID]"
         },
         {
@@ -112,16 +112,23 @@
         },
         {
             "command-line-flag": "-out",
-            "description": "   Output file name\n   Default = `-'",
+            "description": "   Output file name",
             "id": "out",
             "name": "Output file name",
             "optional": true,
             "type": "String",
-            "default-value": "-",
             "value-key": "[OUT]"
         }
     ],
-    "schema-version": "0.1",
+    "output-files": [
+        {
+            "id": "output",
+            "name": "Output File",
+            "path-template": "[OUT]",
+            "optional": false
+        }
+    ],
+    "schema-version": "0.5",
     "suggested-resources": {
         "cpu-cores": 1,
         "ram": 1,
