@@ -127,5 +127,5 @@
         "ram": 1,
         "walltime-estimate": 60
     },
-    "tags": {}
+    "tags": {"domain": ["bioinformatics", "blast"]}
 }
