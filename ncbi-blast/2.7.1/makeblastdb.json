@@ -9,6 +9,7 @@
         "index": "docker://"
     },
     "description": "Application to create BLAST databases, version 2.7.1+",
+    "doi": "10.5281/zenodo.2584164",
     "inputs": [
         {
             "command-line-flag": "-parse_seqids",
