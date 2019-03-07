@@ -9,7 +9,7 @@
         "index": "docker://"
     },
     "description": "Stand-alone BLAST formatter client, version 2.7.1+",
-    "doi": "10.5281/zenodo.2584326",
+    "doi": "10.5281/zenodo.2587157",
     "inputs": [
         {
             "command-line-flag": "-show_gis",
@@ -64,7 +64,6 @@
             "name": "Alignment View Options",
             "optional": true,
             "type": "String",
-            "default-value": "0",
             "value-key": "[OUTFORMAT]"
         },
         {
@@ -75,7 +74,6 @@
             "optional": true,
             "type": "Number",
             "minimum": 0,
-            "default-value": 500,
             "value-key": "[NUM_DESCRIPTIONS]"
         },
         {
@@ -85,7 +83,6 @@
             "name": "Number of Sequence Alignments to Show",
             "optional": true,
             "type": "Number",
-            "default-value": 250,
             "minimum": 0,
             "value-key": "[NUM_ALIGNMENTS]"
         },
@@ -97,7 +94,6 @@
             "optional": true,
             "type": "Number",
             "minimum": 1,
-            "default-value": 60,
             "value-key": "[LINE_LENGTH]"
         },
         {

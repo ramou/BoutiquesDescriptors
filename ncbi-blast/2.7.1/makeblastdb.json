@@ -9,7 +9,7 @@
         "index": "docker://"
     },
     "description": "Application to create BLAST databases, version 2.7.1+",
-    "doi": "10.5281/zenodo.2584164",
+    "doi": "10.5281/zenodo.2587160",
     "inputs": [
         {
             "command-line-flag": "-parse_seqids",
@@ -96,7 +96,6 @@
                 "blastdb",
                 "fasta"
             ],
-            "default-value": "fasta",
             "value-key": "[INPUT_TYPE]"
         },
         {
@@ -154,7 +153,6 @@
             "name": "Max database file size",
             "optional": true,
             "type": "String",
-            "default-value": "1GB",
             "value-key": "[MAX_FILE_SIZE]"
         },
         {

@@ -7,11 +7,10 @@
         "type": "singularity"
     }, 
     "description": "BLAST database integrity and validity checking application", 
-    "doi": "10.5281/zenodo.2586227", 
+    "doi": "10.5281/zenodo.2587156", 
     "inputs": [
         {
             "command-line-flag": "-dbtype", 
-            "default-value": "guess", 
             "description": "Molecule type of target db", 
             "id": "dbtype", 
             "name": "Database Type", 
@@ -47,7 +46,6 @@
         }, 
         {
             "command-line-flag": "-recursive", 
-            "default-value": "true", 
             "description": "Specify true to recurse through all dbs in directory tree.", 
             "id": "recursive", 
             "name": "Blast Archive File", 
@@ -60,7 +58,6 @@
         }, 
         {
             "command-line-flag": "-verbosity", 
-            "default-value": 2, 
             "description": "Verbiosity of results.\n   0=Quiet, 1=Brief, 2=Summary, 3=Detailed, 4=Minutia", 
             "id": "verbosity", 
             "maximum": 4, 
@@ -72,7 +69,6 @@
         }, 
         {
             "command-line-flag": "-full", 
-            "default-value": "true", 
             "description": "If true, test every sequence (warning: may be slow).", 
             "disables-inputs": [
                 "stride", 
@@ -117,7 +113,6 @@
         }, 
         {
             "command-line-flag": "-no_isam", 
-            "default-value": "true", 
             "description": "Disable ISAM testing.", 
             "id": "no_isam", 
             "name": "NO ISAM Testing", 
@@ -127,7 +122,6 @@
         }, 
         {
             "command-line-flag": "-legacy", 
-            "default-value": "true", 
             "description": "Enable check for existence of temporary files.", 
             "id": "legacy", 
             "name": "Legacy temp file existence check", 
@@ -137,7 +131,6 @@
         }, 
         {
             "command-line-flag": "-must_have_taxids", 
-            "default-value": "true", 
             "description": "Require that all sequences in the database have taxid set.", 
             "id": "must_have_taxids", 
             "name": "Must Have taxid set", 
@@ -147,7 +140,6 @@
         }, 
         {
             "command-line-flag": "-cdd_delta", 
-            "default-value": "true", 
             "description": "Do aditional tests for a CDD database for DELTA-BLAST", 
             "id": "cdd_delta", 
             "name": "Do CDD database tests for DELTA-BLAST", 
