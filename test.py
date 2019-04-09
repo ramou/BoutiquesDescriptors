@@ -46,12 +46,17 @@ def processTools(target):
                                                      exc_traceback)))
 
     print("\033[94m"+str(successful)+" of " +str(tried)+" tools successfully validated/tested against bosh in " + dir + " \033[0m")
+    return tried!=successful
+
+failing = False
 
 if sys.version_info >= (3, 4):
     for f in glob.iglob('**/__test__.py', recursive=True):
-        processTools(f)
+        failing |= processTools(f)
 else:
     for root, dirnames, filenames in os.walk('.'):
         for f in fnmatch.filter(filenames, '__test__.py'):
-            processTools(os.path.join(root, f))
+            failing |= processTools(os.path.join(root, f))
 
+if failing:
+    sys.exit(1)
