@@ -131,5 +131,20 @@
         "ram": 1,
         "walltime-estimate": 60
     },
-    "tags": {"domain": ["bioinformatics", "blast"]}
+    "tags": {"domain": ["bioinformatics", "blast"]},
+    "tests": [{
+		"name": "test1",
+		"invocation": {
+			"archive": "out.asn",
+			"outfmt": "\"7 qacc sacc evalue qstart qend sstart send\"",
+			"out": "blast_formatter.out"
+		},
+		"assertions": {
+			"exit-code": 0,
+			"output-files": [{
+				"id": "output",
+				"md5-reference": "efb2f07e1ab37c710c31d6e0e270b943"
+			}]
+		}
+	}]
 }

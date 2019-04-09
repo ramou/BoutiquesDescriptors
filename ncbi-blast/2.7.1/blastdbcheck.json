@@ -161,5 +161,16 @@
             "blast"
         ]
     }, 
-    "tool-version": "v2.7.1"
+    "tool-version": "v2.7.1",
+    "tests": [
+        {
+	     "name": "test1",
+	     "invocation": {
+               "db": "fooo"
+            },
+            "assertions": {
+                "exit-code": 1
+            }
+    }
+]
 }

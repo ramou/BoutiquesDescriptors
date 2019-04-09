@@ -213,5 +213,29 @@
         "ram": 1,
         "walltime-estimate": 60
     },
-    "tags": {"domain": ["bioinformatics", "blast"]}
+    "tags": {"domain": ["bioinformatics", "blast"]},
+    "tests": [
+        {
+	     "name": "test1",
+	     "invocation": {
+               "dbtype": "prot", "in": "uniprotmini.fasta", "out":"mynewdb"
+            },
+            "assertions": {
+                "exit-code": 0,
+                "output-files": [
+                    {
+                        "id": "outputdbphr",
+                        "md5-reference": "53f28c697268a4dda8d3e44831fe1e51"
+                    },
+                    {
+                        "id": "outputdbpin"
+                    },
+                    {
+                        "id": "outputdbpsq",
+                        "md5-reference": "319f8b0c9aa09aadf50c86b4010078a0"
+                    }
+                ]
+            }
+    }
+]
 }
