@@ -50,60 +50,12 @@
         },
         {
             "command-line-flag": "-archive",
-            "description": "File containing BLAST Archive format in ASN.1 (i.e.: output format 11)",
+            "description": "File containing BLAST Archive format in ASN.1 (i.e.: output format 11), which should point to a subject database with files of the given extensions: required: .phr (header), .pin (index), .psq (sequence data) optional: .phd (sorted sequence hash values), .phi (index of sequence hash values), .pnd (sorted GI values), .pni (index of GI values), .pog (OID to GI lookup file), .psd (sorted sequence accession), .psi (index of sequence accession))",
             "id": "archive",
             "name": "Blast Archive File",
             "optional": true,
             "type": "File",
             "value-key": "[ARCHIVE]"
-        },
-        {
-            "description": "P Header",
-            "id": "phr",
-            "name": "Blast Archive File",
-            "optional": true,
-            "type": "File",
-            "value-key": "[PHR]"
-        },
-        {
-            "description": "P Header",
-            "id": "pin",
-            "name": "Blast Archive File",
-            "optional": true,
-            "type": "File",
-            "value-key": "[PIN]"
-        },
-        {
-            "description": "P Header",
-            "id": "pog",
-            "name": "Blast Archive File",
-            "optional": true,
-            "type": "File",
-            "value-key": "[POG]"
-        },
-        {
-            "description": "P Header",
-            "id": "psd",
-            "name": "Blast Archive File",
-            "optional": true,
-            "type": "File",
-            "value-key": "[PSD]"
-        },
-        {
-            "description": "P Header",
-            "id": "psi",
-            "name": "Blast Archive File",
-            "optional": true,
-            "type": "File",
-            "value-key": "[PSI]"
-        },
-        {
-            "description": "P Header",
-            "id": "psg",
-            "name": "Blast Archive File",
-            "optional": true,
-            "type": "File",
-            "value-key": "[PSG]"
         },
         {
             "command-line-flag": "-outfmt",
