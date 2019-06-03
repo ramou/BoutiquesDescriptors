@@ -2,7 +2,7 @@
     "tool-version": "v2.7.1",
     "name": "blast_formatter",
     "author": "Altschul et al.",
-    "command-line": "init_genpipes -a /tmp/$USER/cvmfs-cache -c /etc/parrot/ /cvmfs/soft.mugqic/CentOS6/software/blast/ncbi-blast-2.7.1+/bin/blast_formatter [RID] [ARCHIVE] [OUTFORMAT] [fSHOWGIS] [NUM_DESCRIPTIONS] [NUM_ALIGNMENTS] [LINE_LENGTH] [fHTML] [MAX_TARGET_SEQS] [OUT] [fPARSE_DEFLINES]",
+    "command-line": "init_genpipes -a /tmp/$USER/cvmfs-cache -c /etc/parrot/ cp -R [ARCHIVE_DIR]/* . 2> /dev/null \\; /cvmfs/soft.mugqic/CentOS6/software/blast/ncbi-blast-2.7.1+/bin/blast_formatter [RID] [ARCHIVE] [OUTFORMAT] [fSHOWGIS] [NUM_DESCRIPTIONS] [NUM_ALIGNMENTS] [LINE_LENGTH] [fHTML] [MAX_TARGET_SEQS] [OUT] [fPARSE_DEFLINES]",
     "container-image": {
         "type": "singularity",
         "image": "c3genomics/genpipes",
@@ -56,6 +56,16 @@
             "optional": true,
             "type": "File",
             "value-key": "[ARCHIVE]"
+        },
+        {
+            "description": "directory containing BLAST Archive format in ASN.1 (i.e.: output format 11) and all needed db files",
+            "value-key": "[ARCHIVE_DIR]",
+            "optional": true,
+            "default-value": ".",
+            "type": "File",
+            "id": "archive_dir",
+            "requires-inputs": ["archive"],
+            "name": "Blast Archive Database Directory"
         },
         {
             "command-line-flag": "-outfmt",
