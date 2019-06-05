@@ -2,7 +2,7 @@
     "tool-version": "v2.7.1",
     "name": "blast_formatter",
     "author": "Altschul et al.",
-    "command-line": "init_genpipes -a /tmp/$USER/cvmfs-cache -c /etc/parrot/ cp -R [ARCHIVE_DIR]/* . 2> /dev/null \\; /cvmfs/soft.mugqic/CentOS6/software/blast/ncbi-blast-2.7.1+/bin/blast_formatter [RID] [ARCHIVE] [OUTFORMAT] [fSHOWGIS] [NUM_DESCRIPTIONS] [NUM_ALIGNMENTS] [LINE_LENGTH] [fHTML] [MAX_TARGET_SEQS] [OUT] [fPARSE_DEFLINES]",
+    "command-line": "init_genpipes -a /tmp/$USER/cvmfs-cache -c /etc/parrot/ cp -R [ARCHIVE_DIR]/* . 2> /dev/null \\; /cvmfs/soft.mugqic/CentOS6/software/blast/ncbi-blast-2.7.1+/bin/blast_formatter [RID] [ARCHIVE] [OUTFMT] [fSHOW_GIS] [NUM_DESCRIPTIONS] [NUM_ALIGNMENTS] [LINE_LENGTH] [fHTML] [MAX_TARGET_SEQS] [OUT] [fPARSE_DEFLINES]",
     "container-image": {
         "type": "singularity",
         "image": "c3genomics/genpipes",
@@ -18,7 +18,7 @@
             "name": "Show NCBI GIs",
             "optional": true,
             "type": "Flag",
-            "value-key": "[fSHOWGIS]"
+            "value-key": "[fSHOW_GIS]"
         },
         {
             "command-line-flag": "-html",
@@ -74,7 +74,7 @@
             "name": "Alignment View Options",
             "optional": true,
             "type": "String",
-            "value-key": "[OUTFORMAT]"
+            "value-key": "[OUTFMT]"
         },
         {
             "command-line-flag": "-num_descriptions",
