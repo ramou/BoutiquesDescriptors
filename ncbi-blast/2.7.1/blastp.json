@@ -2,7 +2,7 @@
     "name": "blastp",
     "tool-version": "v2.7.1",
     "author": "Altschul et al.",
-    "command-line": "init_genpipes -a /tmp/$USER/cvmfs-cache -c /etc/parrot/ /cvmfs/soft.mugqic/CentOS6/software/blast/ncbi-blast-2.7.1+/bin/blastp [IMPORT_SEARCH_STRATEGY] [EXPORT_SEARCH_STRATEGY] [TASK] [DB] [DBSIZE] [GILIST] [SEQIDLIST] [NEGATIVE_GILIST] [NEGATIVE_SEQIDLIST] [ENTREZ_QUERY] [DB_SOFT_MASK] [DB_HARD_MASK] [SUBJECT] [SUBJECT_LOC] [QUERY] [OUT] [EVALUE] [WORD_SIZE] [GAPOPEN] [GAPEXTEND] [QCOV_HSP_PERC] [MAX_HSPS] [XDROP_UNGAP] [XDROP_GAP] [XDROP_GAP_FINAL] [SEARCHSP] [SUM_STATS] [SEG] [SOFT_MASKING] [MATRIX] [THRESHOLD] [CULLING_LIMIT] [BEST_HIT_OVERHANG] [BEST_HIT_SCORE_EDGE] [WINDOW_SIZE] [fLCASE_MASKING] [QUERY_LOC] [fPARSE_DEFLINES] [OUTFMT] [fSHOW_GIS] [NUM_DESCRIPTIONS] [NUM_ALIGNMENTS] [LINE_LENGTH] [fHTML] [MAX_TARGET_SEQS] [NUM_THREADS] [fUNGAPPED] [fREMOTE] [COMP_BASED_STATS] [fUSE_SW_TBACK]",
+    "command-line": "init_genpipes -a /tmp/$USER/cvmfs-cache -c /etc/parrot/ cp -R [DB_DIR]/* . 2> /dev/null \\; /cvmfs/soft.mugqic/CentOS6/software/blast/ncbi-blast-2.7.1+/bin/blastp [IMPORT_SEARCH_STRATEGY] [EXPORT_SEARCH_STRATEGY] [TASK] [DB] [DBSIZE] [GILIST] [SEQIDLIST] [NEGATIVE_GILIST] [NEGATIVE_SEQIDLIST] [ENTREZ_QUERY] [DB_SOFT_MASK] [DB_HARD_MASK] [SUBJECT] [SUBJECT_LOC] [QUERY] [OUT] [EVALUE] [WORD_SIZE] [GAPOPEN] [GAPEXTEND] [QCOV_HSP_PERC] [MAX_HSPS] [XDROP_UNGAP] [XDROP_GAP] [XDROP_GAP_FINAL] [SEARCHSP] [SUM_STATS] [SEG] [SOFT_MASKING] [MATRIX] [THRESHOLD] [CULLING_LIMIT] [BEST_HIT_OVERHANG] [BEST_HIT_SCORE_EDGE] [WINDOW_SIZE] [fLCASE_MASKING] [QUERY_LOC] [fPARSE_DEFLINES] [OUTFMT] [fSHOW_GIS] [NUM_DESCRIPTIONS] [NUM_ALIGNMENTS] [LINE_LENGTH] [fHTML] [MAX_TARGET_SEQS] [NUM_THREADS] [fUNGAPPED] [fREMOTE] [COMP_BASED_STATS] [fUSE_SW_TBACK]",
     "container-image": {
         "type": "singularity",
         "image": "c3genomics/genpipes",
@@ -19,6 +19,16 @@
             "type": "String", 
             "disables-inputs": ["subject", "subject_loc"],
             "value-key": "[DB]"
+        },
+        {
+            "description": "directory containing BLAST Archive format in ASN.1 (i.e.: output format 11) and all needed db files",
+            "value-key": "[DB_DIR]",
+            "optional": true,
+            "default-value": ".",
+            "type": "File",
+            "id": "archive_dir",
+            "requires-inputs": ["db"],
+            "name": "Blast Database Directory"
         },
         {
             "command-line-flag": "-query_loc", 
@@ -559,5 +569,27 @@
         "ram": 1,
         "walltime-estimate": 60
     },
-    "tags": {"domain": ["bioinformatics", "blast"]}
+    "tags": {"domain": ["bioinformatics", "blast"]},
+	"tests":[  
+	    {  
+	        "name":"test1",
+	        "invocation": {  
+	            "query": "test1_query.fasta",
+	            "db": "uniprotmini.fasta",
+	            "evalue": 0.001,
+	            "outfmt": "5",
+	            "out": "blastp.out",
+	            "max_target_seqs": 10
+	        },
+	        "assertions":{  
+	            "exit-code":0,
+	            "output-files":[  
+	                {  
+	                    "id": "output",
+	                    "md5-reference": "049ea2f2b7e3fbe9a0c7d36a8e1c749c"
+	                }
+	            ]
+	        }
+	    }
+	]
 }
