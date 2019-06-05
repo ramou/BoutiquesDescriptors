@@ -9,6 +9,7 @@
         "index": "docker://"
     },
     "description": "Protein-Protein BLAST 2.7.1+",
+    "doi": "10.5281/zenodo.3239451",
     "inputs": [
         {
             "command-line-flag": "-db", 
