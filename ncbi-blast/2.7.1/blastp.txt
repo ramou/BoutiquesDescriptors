@@ -1,3 +1,5 @@
+https://www.ncbi.nlm.nih.gov/IEB/ToolBox/CPP_DOC/lxr/source/src/algo/blast/blastinput/blast_args.cpp
+
 USAGE
   blastp [-h] [-help] [-import_search_strategy filename]
     [-export_search_strategy filename] [-task task_name] [-db database_name]
@@ -279,3 +281,80 @@ OPTIONAL ARGUMENTS
    negative_seqidlist, subject_loc, num_threads
  -use_sw_tback
    Compute locally optimal Smith-Waterman alignments?
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+  *********
+  need to add:
+	File
+		DONE query
+		DONE subject !db !gilisht !seqidlist !negative_gilist !negative_seqidlist !db_soft_mask !db_hard_mask
+		DONE import_search_strategy !export_search_strategy
+		DONE export_search_strategy !import_search_strategy
+		
+	Float
+		DONE evalue
+		DONE threshold >= 0
+		DONE qcov_hsp_perc [Real, 0..100]
+		DONE best_hit_overhang >0, <0.5 !culling_limit
+		DONE best_hit_score_edge >0, <0.5
+		DONE xdrop_ungap
+		DONE xdrop_gap
+		DONE xdrop_gap_final
+		
+		
+	Int
+		DONE word_size >=2
+		DONE gapopen
+		DONE gapextend
+		DONE max_hsps >=1
+		DONE culling_limit >=0 !best_hit_overhang !best_hit_score_edge
+		DONE max_target_seqs >=1 !num_descriptions !num_alignments
+		DONE dbsize >=0
+		DONE searchsp
+		DONE window_size >=0
+		DONE num_threads >=1, <=12
+		
+	Boolean (treat as flag?)
+		DONE soft_masking
+		DONE sum_stats
+		
+	Flag?
+		DONE lcase_masking
+		DONE ungapped
+		DONE parse_deflines
+		DONE remote !gilist !seqidlist !negative_gilist !negative_seqidlist !subject_loc !num_threads
+		DONE use_sw_tback
+		
+	String
+		DONE db !subject !subject_loc
+		DONE query_loc
+		DONE subject_loc !db !gilisht !seqidlist !negative_gilist !negative_seqidlist !db_soft_mask !db_hard_mask
+		DONE task ['blastp', 'blastp-fast', 'blastp-short']
+		DONE matrix
+		DONE comp_based_stats ['D', 'd', '0', 'F', 'f', '1', '2', 'T', 't', '3'] // This is really just 0, 1, 2 or 3?
+		DONE seg ['yes', 'window locut hicut', 'no']
+		DONE gilist !negative_gilist !seqidlist !negative_seqidlist !remote !subject !subject_loc
+		DONE seqidlist !gilist !negative_gilist !negative_seqidlist !remote !subject !subject_loc
+		DONE negative_gilist !gilist !seqidlist !remote !subject !subject_loc
+		DONE negative_seqidlist !gilist !seqidlist !remote !subject !subject_loc
+		DONE entrez_query +remote
+		DONE db_soft_mask !db_hard_mask !subject !subject_loc
+		DONE db_hard_mask !db_soft_mask !subject !subject_loc
+		
+		
+Same as blast_formatter
+		DONE outfmt
+		DONE show_gis
+		DONE num_descriptions
+		DONE num_alignments
+		DONE line_length
+		DONE html
+		DONE out
