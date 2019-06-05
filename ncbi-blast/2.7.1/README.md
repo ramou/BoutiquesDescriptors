@@ -5,7 +5,7 @@
  - [ ] [blastdbcmd](https://github.com/ramou/BoutiquesDescriptors/blob/develop/ncbi-blast/2.7.1/blastdbcmd.json)
  - [ ] [blastdbcp](https://github.com/ramou/BoutiquesDescriptors/blob/develop/ncbi-blast/2.7.1/blastdbcp.json)
  - [ ] [blastn](https://github.com/ramou/BoutiquesDescriptors/blob/develop/ncbi-blast/2.7.1/blastn.json)
- - [ ] [blastp](https://github.com/ramou/BoutiquesDescriptors/blob/develop/ncbi-blast/2.7.1/blastp.json)
+ - [x] [blastp](https://github.com/ramou/BoutiquesDescriptors/blob/develop/ncbi-blast/2.7.1/blastp.json)
  - [ ] [blastx](https://github.com/ramou/BoutiquesDescriptors/blob/develop/ncbi-blast/2.7.1/blastx.json)
  - [ ] [convert2blastmask](https://github.com/ramou/BoutiquesDescriptors/blob/develop/ncbi-blast/2.7.1/convert2blastmask.json)
  - [ ] [datatool](https://github.com/ramou/BoutiquesDescriptors/blob/develop/ncbi-blast/2.7.1/datatool.json)
