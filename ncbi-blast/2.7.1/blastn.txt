@@ -309,3 +309,50 @@ OPTIONAL ARGUMENTS
    Execute search remotely?
     * Incompatible with:  gilist, seqidlist, negative_gilist,
    negative_seqidlist, subject_loc, num_threads
+   
+   
+   
+ ##Not in blastp
+ 
+ 
+ DONE -penalty <Integer, <=0>
+   Penalty for a nucleotide mismatch
+ DONE -reward <Integer, >=0>
+   Reward for a nucleotide match
+ DONE -window_masker_taxid <Integer>
+   Enable WindowMasker filtering using a Taxonomic ID
+ DONE -template_length <Integer, Permissible values: '16' '18' '21' >
+   Discontiguous MegaBLAST template length
+    * Requires:  template_type
+ DONE -min_raw_gapped_score <Integer>
+   Minimum raw gapped score to keep an alignment in the preliminary gapped and
+   traceback stages
+ DONE -off_diagonal_range <Integer, >=0>
+   Number of off-diagonals to search for the 2nd hit, use 0 to turn off
+   Default = `0'
+
+ DONE -perc_identity <Real, 0..100>
+   Percent identity
+          
+ DONE -use_index <Boolean>
+   Use MegaBLAST database index
+   Default = `false'
+
+ DONE -no_greedy <Flag>
+   Use non-greedy dynamic programming extension
+
+ DONE -index_name <String>
+   MegaBLAST database index name (deprecated; use only for old style indices)
+ DONE -filtering_db <String>
+   BLAST database containing filtering elements (i.e.: repeats)
+ DONE -window_masker_db <String>
+   Enable WindowMasker filtering using this repeats database. 
+ DONE -template_type <String, `coding', `coding_and_optimal', `optimal'>
+   Discontiguous MegaBLAST template type
+    * Requires:  template_length
+
+
+
+
+
+

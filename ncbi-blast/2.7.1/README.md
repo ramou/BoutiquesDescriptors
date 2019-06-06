@@ -4,7 +4,7 @@
   - The testing isn't great as there may be problems with the tool.
  - [ ] [blastdbcmd](https://github.com/ramou/BoutiquesDescriptors/blob/develop/ncbi-blast/2.7.1/blastdbcmd.json)
  - [ ] [blastdbcp](https://github.com/ramou/BoutiquesDescriptors/blob/develop/ncbi-blast/2.7.1/blastdbcp.json)
- - [ ] [blastn](https://github.com/ramou/BoutiquesDescriptors/blob/develop/ncbi-blast/2.7.1/blastn.json)
+ - [x] [blastn](https://github.com/ramou/BoutiquesDescriptors/blob/develop/ncbi-blast/2.7.1/blastn.json)
  - [x] [blastp](https://github.com/ramou/BoutiquesDescriptors/blob/develop/ncbi-blast/2.7.1/blastp.json)
  - [ ] [blastx](https://github.com/ramou/BoutiquesDescriptors/blob/develop/ncbi-blast/2.7.1/blastx.json)
  - [ ] [convert2blastmask](https://github.com/ramou/BoutiquesDescriptors/blob/develop/ncbi-blast/2.7.1/convert2blastmask.json)
