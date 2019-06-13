@@ -7,6 +7,7 @@ import tempfile
 import traceback
 from shutil import copyfile, rmtree, copytree
 
+log = ""
 def testTools(target):
     path, file = os.path.split(target)
     tool = file[0:-5]
@@ -28,9 +29,12 @@ def testTools(target):
         rmtree(tmp)
 
 def processTools(target):
+    global log
     dir = os.path.realpath(os.path.dirname(target))
     newtar = os.path.join(dir,"*.json")
-    print("\033[94mProcessing Tools in " + dir + " \033[0m")
+    message = "\033[94mProcessing Tools in " + dir + " \033[0m"
+    print(message)
+    log = log+"\n"+message
     successful = 0
     tried = 0;
     for f in glob.iglob(newtar):
@@ -38,14 +42,17 @@ def processTools(target):
         try:
             testTools(f)
             successful += 1
-            print("\t\033[92mSuccess on " + f + " \033[0m")
+            message="\t\033[92mSuccess on \t" + f + " \033[0m"
         except:
-            print("\t\033[91mError on " + f + " \033[0m")
+            message="\t\033[91mError on \t" + f + " \033[0m"
             exc_type, exc_value, exc_traceback = sys.exc_info()
             print("".join(traceback.format_exception(exc_type, exc_value,
                                                      exc_traceback)))
-
-    print("\033[94m"+str(successful)+" of " +str(tried)+" tools successfully validated/tested against bosh in " + dir + " \033[0m")
+        print(message)
+        log = log+"\n"+message
+    message = "\033[94m"+str(successful)+" of " +str(tried)+" tools successfully validated/tested against bosh in " + dir + " \033[0m\n"
+    print(message)
+    log = log+"\n"+message
     return tried!=successful
 
 failing = False
@@ -57,6 +64,8 @@ else:
     for root, dirnames, filenames in os.walk('.'):
         for f in fnmatch.filter(filenames, '__test__.py'):
             failing |= processTools(os.path.join(root, f))
-
+print("")
+print("\033[94mFinal Results:\033[0m")
+print(log)
 if failing:
     sys.exit(1)
