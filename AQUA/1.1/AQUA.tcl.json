@@ -9,6 +9,7 @@
         "index": "shub://"
     },
     "description": "automatic quality improvment for multiple sequence alignment.",
+    "doi": "10.5281/zenodo.3245387",
     "inputs": [
         {
             "description": "A file containing the input sequence in fasta format",
