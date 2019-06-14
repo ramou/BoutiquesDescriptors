@@ -1,0 +1,106 @@
+http://www.drive5.com/muscle/manual/options.html
+http://www.drive5.com/muscle/manual/flagopts.html
+http://www.drive5.com/muscle/manual/valueopts.html
+
+This software is donated to the public domain.
+Please cite: Edgar, R.C. Nucleic Acids Res 32(5), 1792-97.
+
+
+Basic usage
+
+    muscle -in <inputfile> -out <outputfile>
+
+Common options (for a complete list please see the User Guide):
+
+    -in <inputfile>    Input file in FASTA format (default stdin)
+    -out <outputfile>  Output alignment in FASTA format (default stdout)
+    -diags             Find diagonals (faster for similar sequences)
+    -maxiters <n>      Maximum number of iterations (integer, default 16)
+    -maxhours <h>      Maximum time to iterate in hours (default no limit)
+    -maxmb <m>         Maximum memory to allocate in Mb (default 80% of RAM)
+    -html              Write output in HTML format (default FASTA)
+    -msf               Write output in GCG MSF format (default FASTA)
+    -clw               Write output in CLUSTALW format (default FASTA)
+    -clwstrict         As -clw, with 'CLUSTAL W (1.81)' header
+    -log[a] <logfile>  Log to file (append if -loga, overwrite if -log)
+    -quiet             Do not write progress messages to stderr
+    -stable            Output sequences in input order (default is -group)
+    -group             Group sequences by similarity (this is the default)
+    -version           Display version information and exit
+
+    
+    FLAGS
+    core
+    nocore
+    diags
+    diags1
+    diags2
+    anchors
+    noanchors
+    quiet
+    stable
+    group
+    refine
+    refine2
+    profdb
+    sw
+    clusteronly
+    profile
+    ppscore
+    brenner
+    dimer
+    msf
+    phyi
+    phys
+    clw
+    html
+    fasta
+    pas
+    maketree
+    clwstrict
+    tomhydro
+    
+    
+    Float
+    gapopen
+    gapopen2
+    gapextend
+    gapextend2
+    gapambig
+    center
+    smoothscoreceil
+    minbestcolscore
+    minsmoothscore
+
+
+	Enumerations
+    distance ["Kmer6_6", "Kmer20_3", "Kmer20_4", "Kbit20_3", "Kmer4_6", "PWKimura", "PWScoreDist"]
+    distance1
+    distance2
+    
+    File
+    in
+    in1
+    in2
+    out
+    fastaout
+    clwout
+    clwstrictout
+    htmlout
+    phyiout
+    physout
+    msfout
+    matrix
+    spscore
+    usertree_nowarn
+    usetree
+    computeweights
+    scorefile
+    distmx1
+    distmx2
+    
+    
+    
+    String
+    
+    
