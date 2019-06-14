@@ -1,0 +1,334 @@
+{
+    "tool-version": "v6.611",
+    "name": "mafft",
+    "author": "Kazutaka Katoh",
+    "command-line": "mafft [INPUT] > [OUTPUT]",
+    "container-image": {
+        "type": "singularity",
+        "image": "bioinformatics-group/aqua-singularity-recipe",
+        "index": "shub://"
+    },
+    "description": "A multiple sequence alignment program for unix-like operating systems.",
+    "doi": "10.5281/zenodo.3245387",
+    "inputs": [
+        {
+            "description": "A file containing the input sequence in fasta format",
+            "id": "input",
+            "name": "Input Sequence",
+            "optional": false,
+            "type": "File",
+            "value-key": "[INPUT]"
+        },
+        {
+            "description": "The file where the output will be stored, in fasta (or, if specified, clustalw) format.",
+            "id": "output",
+            "name": "Output Results",
+            "optional": false,
+            "default-value": ".",
+            "type": "File",
+            "value-key": "[OUTPUT]"
+        },
+        {
+            "command-line-flag": "--clustalout",
+            "description": "Use clustal output format instead of fasta.",
+            "id": "clustalout",
+            "name": "Clustal Output Formatting",
+            "optional": true,
+            "type": "Flag",
+            "value-key": "[fCLUSTALOUT]"
+        },
+        {
+            "command-line-flag": "--reorder",
+            "description": "Output in aligned order instead of using input order",
+            "id": "reorder",
+            "name": "Aligned Ordering for Output",
+            "optional": true,
+            "type": "Flag",
+            "value-key": "[fREORDER]"
+        },
+        {
+            "command-line-flag": "--rough",
+            "description": "Enable rough alighment for >1,000 sequences",
+            "id": "rough",
+            "name": "Rough Alignment for Large Sequences",
+            "optional": true,
+            "type": "Flag",
+            "value-key": "[fROUGH]"
+        },
+        {
+            "command-line-flag": "--noscore",
+            "description": "Alignment score is not checked in the iterative refinement stage.",
+            "id": "noscore",
+            "name": "No Score",
+            "optional": true,
+            "type": "Flag",
+            "value-key": "[fNOSCORE]"
+        },
+        {
+            "command-line-flag": "--fastswpair",
+            "description": "Enable FASTA computing with Smith-Waterman optimization.",
+            "id": "fastswpair",
+            "name": "Fasta With Smith-Waterman",
+            "optional": true,
+            "type": "Flag",
+            "value-key": "[fFASTSWPAI]"
+        },
+        {
+            "command-line-flag": "--fastapair",
+            "description": "All pairwise alignments are computed with FASTA (Pearson and Lipman 1988). FASTA is required. Default: off (6mer distance is used)",
+            "id": "fastapair",
+            "name": "Fasta Without Smith-Waterman",
+            "optional": true,
+            "type": "Flag",
+            "value-key": "[fFASTAPAIR]"
+        },
+        {
+            "command-line-flag": "--suboptpair",
+            "description": "Use pairlocalalign on BLOSUM62 with specified penalties (or defaults) (I think same as --genafpair?).",
+            "id": "suboptpair",
+            "name": "Sub-optimal Pairwise",
+            "optional": true,
+            "type": "Flag",
+            "value-key": "[fSUBOPTPAIR]"
+        },
+        {
+            "command-line-flag": "--blastpair",
+            "description": "Enable dbdblast computing.",
+            "id": "blastpair",
+            "name": "DBDBlast Computing",
+            "optional": true,
+            "type": "Flag",
+            "value-key": "[fBLASTPAIR]"
+        },
+        {
+            "command-line-flag": "--globalpair",
+            "description": "All pairwise alignments are computed with the Needleman-Wunsch algorithm. More accurate but slower than --6merpair. Suitable for a set of globally alignable sequences. Applicable to up to ~200 sequences. A combination with --maxiterate 1000 is recommended (G-INS-i). Default: off (6mer distance is used)",
+            "id": "globalpair",
+            "name": "Needleman-Wunsch Computing",
+            "optional": true,
+            "type": "Flag",
+            "value-key": "[fGLOBALPAIR]"
+        },
+        {
+            "command-line-flag": "--localpair",
+            "description": "All pairwise alignments are computed with the Smith-Waterman algorithm. More accurate but slower than --6merpair. Suitable for a set of locally alignable sequences. Applicable to up to ~200 sequences. A combination with --maxiterate 1000 is recommended (L-INS-i). Default: off (6mer distance is used)",
+            "id": "localpair",
+            "name": "Smith-Waterman computing",
+            "optional": true,
+            "type": "Flag",
+            "value-key": "[fLOCALPAIR]"
+        },
+        {
+            "command-line-flag": "--genafpair",
+            "description": "All pairwise alignments are computed with a local algorithm with the generalized affine gap cost (Altschul 1998). More accurate but slower than --6merpair. Suitable when large internal gaps are expected. Applicable to up to ~200 sequences. A combination with --maxiterate 1000 is recommended (E-INS-i). Default: off (6mer distance is used)",
+            "id": "genafpair",
+            "name": "Local Algorithm Computing",
+            "optional": true,
+            "type": "Flag",
+            "value-key": "[fGENAFPAIR]"
+        },
+        {
+            "command-line-flag": "--nuc",
+            "description": "Assume the sequences are nucleotide. Default: auto",
+            "id": "nuc",
+            "name": "Nucleotide Sequence",
+            "optional": true,
+            "type": "Flag",
+            "value-key": "[fNUC]"
+        },
+        {
+            "command-line-flag": "--amino",
+            "description": "Assume the sequences are amino acids. Default: auto",
+            "id": "amino",
+            "name": "Amino Acid Sequence",
+            "optional": true,
+            "type": "Flag",
+            "value-key": "[fAMINO]"
+        },
+        {
+            "command-line-flag": "--nofft",
+            "description": "Disable FFT (change default for ginsi, fftns, fftnsi)",
+            "id": "nofft",
+            "name": "No FFT Approximation",
+            "optional": true,
+            "type": "Flag",
+            "value-key": "[fNOFFT]"
+        },
+        {
+            "command-line-flag": "--fft",
+            "description": "Enable FFT (change default for linsi, einsi, nwns, nwnsi)",
+            "id": "fft",
+            "name": "FFT Approximation",
+            "optional": true,
+            "type": "Flag",
+            "value-key": "[fAMINO]"
+        },
+        {
+            "command-line-flag": "--quiet",
+            "description": "Do not report progress",
+            "id": "quiet",
+            "name": "Run Quietly",
+            "optional": true,
+            "type": "Flag",
+            "value-key": "[fQUIET]"
+        },
+        {
+            "command-line-flag": "--nj",
+            "description": "Perform tree dependent iterative refinement on an NJ tree. Uses UPG without this flag.",
+            "id": "nj",
+            "name": "Use NJ Tree",
+            "optional": true,
+            "type": "Flag",
+            "value-key": "[fNJ]"
+        },
+        {
+            "command-line-flag": "--coreext",
+            "description": "use core extension",
+            "id": "coreext",
+            "name": "Core Extension",
+            "optional": true,
+            "type": "Flag",
+            "requires-inputs": ["core"],
+            "value-key": "[fCOREEXT]"
+        },
+        {
+            "command-line-flag": "--core",
+            "description": "Use Setcore",
+            "id": "core",
+            "name": "setcore",
+            "optional": true,
+            "type": "Flag",
+            "value-key": "[fCORE]"
+        },
+        {
+            "command-line-flag": "--jtt",
+            "description": "JTT PAM number (Jones et al. 1992) matrix is used. number>0. Default: BLOSUM62",
+            "id": "jtt",
+            "name": "JTT",
+            "optional": true,
+            "type": "Number",
+            "integer": true,
+            "minimum": 0,
+            "value-key": "[JTT]"
+        },
+        {
+            "command-line-flag": "--bl",
+            "description": "Uses specified BLOSUM matrix. Default 62",
+            "id": "bl",
+            "name": "BLOSUM Matrix",
+            "optional": true,
+            "type": "Number",
+            "integer": true,
+            "value-choices": [
+                30, 
+                45,  
+                62,
+                80
+            ], 
+            "value-key": "[BL]"
+        },
+        {
+            "command-line-flag": "--tm",
+            "description": "Transmembrane PAM number (Jones et al. 1994) matrix is used. number>0. Default: BLOSUM62",
+            "id": "tm",
+            "name": "Transmembrane PAM number",
+            "optional": true,
+            "type": "Number",
+            "integer": true,
+            "minimum": 0,
+            "value-key": "[TM]"
+        },
+        {
+            "command-line-flag": "--maxiterate",
+            "description": "Maximum number of iterative refinements (1000 for linsi, ginsi, einsi. 2 for fftnsi, nwnsi)",
+            "id": "maxiterate",
+            "name": "Maximum Iterative Refinements",
+            "optional": true,
+            "type": "Number",
+            "integer": true,
+            "minimum": 0,
+            "value-key": "[MAXITERATE]"
+        },
+        {
+            "command-line-flag": "--retree",
+            "description": "Build guide tree this many times during the progressive stage. Default 2",
+            "id": "retree",
+            "name": "Guide Tree Rebuilds",
+            "optional": true,
+            "type": "Number",
+            "integer": true,
+            "minimum": 0,
+            "disables-inputs": ["globalpair", "localpair", "genafpair", "fastswpair", "fastapair", "suboptpair", "blastpair"],
+            "value-key": "[RETREE]"
+        },
+        {
+            "command-line-flag": "--weighti",
+            "description": "Weighting factor for the consistency term calculated from pairwise allignment",
+            "id": "weighti",
+            "name": "Weighting Factor",
+            "optional": true,
+            "type": "Number",
+            "integer": true,
+            "minimum": 0,
+            "value-key": "[WEIGHTI]"
+        }
+    ],
+    "groups": [
+        {
+            "id": "comparison_approach",
+            "name": "Comparison Approaches",
+            "members": [
+                "fastswpair",
+                "fastapair",
+                "suboptpair",
+                "blastpair",
+                "globalpair",
+                "localpair",
+                "genafpair"
+            ],
+            "mutually-exclusive": true
+        }, 
+        {
+            "id": "sequence_type",
+            "name": "Sequence Type",
+            "members": [
+                "nuc",
+                "amino"
+            ],
+            "mutually-exclusive": true
+        }, 
+        {
+            "id": "fft_flags",
+            "name": "FFT",
+            "members": [
+                "fft",
+                "nofft"
+            ],
+            "mutually-exclusive": true
+        }
+    ],
+    "schema-version": "0.5",
+    "suggested-resources": {
+        "cpu-cores": 1,
+        "ram": 1,
+        "walltime-estimate": 60
+    },
+    "tags": {"domain": ["bioinformatics", "AQUA"]},
+    "tests": [
+        {
+	     "name": "test1",
+	     "invocation": {
+               "input": "uniprotminier.fasta"
+            },
+            "assertions": {
+                "exit-code": 0,
+                "output-files": [
+                    {
+                        "id": "outmafft_rascal",
+                        "md5-reference": "4b003bebd3fb9722152f65ab5d17c434"
+                    }
+                ]
+            }
+        }
+    ]
+}

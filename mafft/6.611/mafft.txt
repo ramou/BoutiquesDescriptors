@@ -1,0 +1,106 @@
+https://mafft.cbrc.jp/alignment/software/manual/manual.html
+
+FLAG
+"--clustalout"   ! Use clustal output format instead of fasta
+"--reorder"      ! Output in aligned order instead of using input order
+"--rough"        ! Enable rough alighment for >1,000 sequences
+"--noscore"      ! Don't do score check?
+"--fastswpair"   ! Enable FASTA comparison Smith-Waterman optimization
+"--fastapair"    ! Enable FASTA comparison without Smith-Waterman optimization 
+"--suboptpair"   ! Use pairlocalalign on BLOSUM62 with specified penalties (or defaults) (I think same as --genafpair?)
+"--blastpair"    ! use dbdblast
+"--globalpair"   ! Included all pairwise global alignment information.
+"--localpair"    ! Included all pairwise local alignment information.
+"--genafpair"    ! use pairlocalalign on BLOSUM62 with specified penalties (or defaults)
+"--nuc"          ! Nucleotide Sequence Type ~amino
+"--amino"        ! Protein Sequence Type !nuc
+"--nofft"        ! Disable FFT (change default for ginsi, fftns, fftnsi)
+"--fft"          ! Enable FFT (change default for linsi, einsi, nwns, nwnsi)
+"--quiet"        ! Do not report progress
+"--nj"           ! Perform tree dependent iterative refinement on an NJ tree. Uses UPG without this flag.
+"--coreext"      ! use core extension !requires core?
+"--core"         ! use setcore?
+
+
+INTEGER
+"--maxiterate"   ! Maximum number of iterative refinements (1000 for linsi, ginsi, einsi. 2 for fftnsi, nwnsi)
+"--retree"       ! Build guide tree this many times during the progressive stage. Default 2 #! requires not [globalpair, localpair, genafpair, fastswpair, fastapair, suboptpair, blastpair]
+"--weighti"      ! Weighting factor for the consistency term calculated from pairwise allignments #! requires one of [globalpair, localpair, genafpair, fastswpair, fastapair, suboptpair, blastpair] defaults to 2.7
+"--jtt" PAM # Jones Taylor Thornton (jtt) point accepted mutation model !tm (gt 0, default BLOSUM62)
+"--bl" [30, 45, 62, 80] BLOSUM number matrix. Default 62
+"--tm" PAM # Transmembrane point accepted mutation model !jtt (gt 0, default BLOSUM62)
+
+
+NUMBER OF SOME TYPE
+
+FLOAT
+"--op"     ! Gap opening penalty (group-to-group alignment). Default 1.53
+"--ep"     ! Offset (like gap extension penalty) (group-to-group alignment). Default 0.123
+
+SOMETHING
+prefix/pairlocalalign
+"--lop" -f  FLOAT ! ppenalty Gap opening penalty          ! requires genafpair or localpair
+"--LOP" -O  FLOAT ! ppenalty_OP (For Pairwise Alignment?) ! requires genafpair 
+"--lep" -h  FLOAT ! poffset  (For Group Alignment?)       ! requires genafpair or localpair
+"--lexp" -g FLOAT ! ppenaltt_ex Gap extension penalty     ! requires genafpair or localpair
+"--LEXP" -E FLOAT ! ppenalty_EX                           ! requires genafpair
+
+prefix/setcore
+"--corethr" -i FLOAT ! No idea what this is, maybe defaults to 0.5? If the tmpavgap/winsize is less than this then it sets corestart and end winsize apart and potentially adjusts gapmin... these words don't mean anything to me, so only mess with the core stuff if this means something to you!
+"--corewin" -w INT ! Core extension window size
+
+
+FLAG
+clustalout
+reorder
+rough
+noscore
+fastswpair !fastapair & !suboptpair & !blastpair & !globalpair & !localpair & !genafpair
+fastapair !fastswpair & !suboptpair & !blastpair & !globalpair & !localpair & !genafpair
+suboptpair !fastswpair & !fastapair & !blastpair & !globalpair & !localpair & !genafpair
+blastpair !fastswpair & !fastapair & !suboptpair & !globalpair & !localpair & !genafpair
+globalpair !fastswpair & !fastapair & !suboptpair & !blastpair & !localpair & !genafpair
+localpair !fastswpair & !fastapair & !suboptpair & !blastpair & !globalpair & !genafpair
+genafpair !fastswpair & !fastapair & !suboptpair & !blastpair & !globalpair & !localpair
+nuc !amino
+amino !nuc
+nofft !fft
+fft !nofft
+quiet
+nj
+coreext +core
+core
+
+
+FILE
+in
+out
+
+STRING
+
+INT
+corewin +core
+tm 
+jtt
+bl [30, 45, 62, 80]
+weighti !globalpair & !localpair & !genafpair & !fastswpair & !fastapair & !suboptpair & !blastpair
+retree !globalpair & !localpair & !genafpair & !fastswpair & !fastapair & !suboptpair & !blastpair
+maxiterate
+
+FLOAT
+corethr +core
+LEXP +genafpair
+lexp +(genafpair | localpair)
+lep +(genafpair | localpair)
+LOP +genafpair
+lop +(genafpair | localpair)
+ep
+op
+
+
+
+
+
+
+
+
