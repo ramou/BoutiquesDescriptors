@@ -1,7 +1,7 @@
 {
-    "tool-version": "v1.0",
-    "name": "TranCEP",
-    "author": "Alballa M, Aplop F, Butler G",
+    "tool-version": "1.0",
+    "name": "TransATH",
+    "author": "Aplop F, Butler G",
     "command-line": "glbast [INPUT] [OUTPUT_DIR] [EVALUE] [COVERAGE]",
     "container-image": {
         "type": "singularity",
@@ -69,9 +69,27 @@
     ],
     "output-files": [
         {
+            "id": "nohits",
+            "name": "Sequences Without Any Hits",
+            "path-template": "result/[OUTPUT_DIR]/no_hits.out",
+            "optional": false
+        },
+        {
             "id": "outclass",
-            "name": "Protein Classification",
-            "path-template": "result/[OUTPUT_DIR]/out.csv",
+            "name": "Sequences With Hits",
+            "path-template": "result/[OUTPUT_DIR]/hits.out",
+            "optional": false
+        },
+        {
+            "id": "outclass",
+            "name": "Cleaned Tab-Separated Reuslts",
+            "path-template": "result/[OUTPUT_DIR]/clean.tsv",
+            "optional": false
+        },
+        {
+            "id": "outclass",
+            "name": "Blast Output, Intermediate File",
+            "path-template": "result/[OUTPUT_DIR]/blast.out",
             "optional": false
         }
     ],
@@ -81,22 +99,8 @@
         "ram": 1,
         "walltime-estimate": 60
     },
-    "tags": {"domain": ["bioinformatics", "TranCEP"]},
+    "tags": {"domain": ["bioinformatics", "TransATH"]},
     "tests": [
-        {
-	     "name": "test1",
-	     "invocation": {
-               "input": "test.fasta"
-            },
-            "assertions": {
-                "exit-code": 0,
-                "output-files": [
-                    {
-                        "id": "outclass",
-                        "md5-reference": "3d7701cfa7b559aec55155899f716065"
-                    }
-                ]
-            }
-        }
+
     ]
 }
