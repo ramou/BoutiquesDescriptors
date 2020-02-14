@@ -1,0 +1,80 @@
+{
+    "tool-version": "v1.svm.11",
+    "name": "Toot-SC",
+    "author": "Alballa M, Aplop F, Butler G",
+    "command-line": "TranCEP.R [INPUT] [TOOTSC_DIR] [OUTPUT_DIR]",
+    "container-image": {
+        "type": "singularity",
+        "image": "bioinformatics-group/TranCPE",
+        "index": "shub://",
+        "container-opts": [
+                "-H $PWD"
+        ]
+    },
+    "description": "Predicts the protein classification for provided sequences.",
+    "inputs": [
+        {
+        	"command-line-flag": "-query",
+        	"command-line-flag-separator": "=",
+            "description": "A file containing one or more input sequences in fasta format",
+            "id": "input",
+            "name": "Input Sequences",
+            "optional": false,
+            "type": "File",
+            "value-key": "[INPUT]"
+        },
+        {
+        	"command-line-flag": "-TooTSC",
+        	"command-line-flag-separator": "=",
+            "description": "The directory where the base Toot-SC files are located. Included in the singularity image, so probably avoid changing this unless you know what's up.",
+            "id": "tootsc_dir",
+            "name": "Toot-SC File Directory",
+            "optional": true,
+            "type": "File",
+            "value-key": "[TOOTSC_DIR]"
+        },
+        {
+        	"command-line-flag": "-out",
+        	"command-line-flag-separator": "=",
+            "description": "The directory where the results (and intermediate data) are stored. The default location is the same directory as the input sequence.",
+            "id": "output_dir",
+            "name": "Output Directory",
+            "default-value": ".",
+            "optional": true,
+            "type": "File",
+            "value-key": "[OUTPUT_DIR]"
+        }
+    ],
+    "output-files": [
+        {
+            "id": "outclass",
+            "name": "Protein Classification",
+            "path-template": "[OUTPUT_DIR]/out.csv",
+            "optional": false
+        }
+    ],
+    "schema-version": "0.5",
+    "suggested-resources": {
+        "cpu-cores": 1,
+        "ram": 1,
+        "walltime-estimate": 60
+    },
+    "tags": {"domain": ["bioinformatics", "TranCEP"]},
+    "tests": [
+        {
+	     "name": "test1",
+	     "invocation": {
+               "input": "test.fasta"
+            },
+            "assertions": {
+                "exit-code": 0,
+                "output-files": [
+                    {
+                        "id": "outclass",
+                        "md5-reference": "3d7701cfa7b559aec55155899f716065"
+                    }
+                ]
+            }
+        }
+    ]
+}
