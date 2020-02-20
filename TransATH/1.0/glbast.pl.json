@@ -2,13 +2,12 @@
     "tool-version": "1.0",
     "name": "TransATH",
     "author": "Aplop F, Butler G",
-    "command-line": "glbast [INPUT] [OUTPUT_DIR] [EVALUE] [COVERAGE]",
+    "command-line": "gblast.pl [INPUT] [OUTPUT_DIR] [EVALUE] [COVERAGE]",
     "container-image": {
         "type": "singularity",
-        "image": "bioinformatics-group/TranCPE",
+        "image": "bioinformatics-group/TransATH",
         "index": "shub://",
         "container-opts": [
-        		"--writable-tmpfs",
                 "-H $PWD"
         ]
     },
@@ -40,7 +39,6 @@
             "value-key": "[EVALUE]"
         },
         {
-            "command-line-flag": "-coverage",
             "description": "Coverage",
             "id": "coverage",
             "name": "Coverage",
@@ -57,8 +55,6 @@
             "value-key": "[COVERAGE]"
         },
         {
-        	"command-line-flag": "-out",
-        	"command-line-flag-separator": "=",
             "description": "The directory where the results (and intermediate data) are stored. The default location is the same directory as the input sequence.",
             "id": "output_dir",
             "name": "Output Directory",
